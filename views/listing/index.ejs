@@ -1,0 +1,28 @@
+<% layout('/layouts/boilerplate')-%>
+<body>
+  <div class="container">
+    <div class="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+      <%for(item of items){%>
+      <a href="/listings/<%=item.id%>" class="cards">
+        <div class="col card all" style="width: 18rem">
+          <img
+            class="card-img-top rounded mx-auto d-block"
+            src="<%=item.image%>"
+            alt="image not found"
+            style="width: 18rem; height: 18rem; object-fit: cover"
+          />
+
+          <div class="card-body">
+            <div class="card-text">
+              <%=item.title%>
+              <br />
+              &#8377; <%= item.price %> / night
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <%}%>
+    </div>
+  </div>
+</body>

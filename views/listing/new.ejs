@@ -1,0 +1,94 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br />
+      <h1>Create new</h1>
+      <br />
+      <form action="/listings" method="post">
+        <div class="row mb-3">
+          <label for="title" class="col-sm-2 col-form-label">title</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="listing[title]"
+              required
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="description" class="col-sm-2 col-form-label"
+            >description</label
+          >
+          <div div class="col-sm-10">
+            <textarea
+              type="text"
+              class="form-control"
+              id="description"
+              name="listing[description]"
+              rows="4"
+              required
+            ></textarea>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="image" class="col-sm-2 col-form-label">image</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="image"
+              name="listing[image]"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="row col mb-3">
+            <label for="Price" class="col-sm-4 col-form-label">Price</label>
+            <div class="col-sm">
+              <input
+                type="number"
+                class="form-control"
+                id="Price"
+                name="listing[price]"
+                required
+              />
+            </div>
+          </div>
+          <div class="row col mb-3">
+            <div class="col-sm-1"></div>
+            <label for="location" class="col-sm-3 col-form-label"
+              >location</label
+            >
+            <div class="col-sm">
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="listing[location]"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="Country" class="col-sm-2 col-form-label">Country</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="Country"
+              name="listing[country]"
+              required
+            />
+          </div>
+        </div>
+        <br />
+        <button class="btn btn-outline-secondary btn-lg">create</button>
+      </form>
+    </div>
+  </div>
+</body>

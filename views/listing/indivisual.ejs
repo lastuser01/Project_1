@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div class="container">
+    <div class="card mb-3 mx-3 my-3">
+      <div class="p-3">
+        <img
+          class="img rounded mx-auto d-block"
+          src="<%=item.image%>"
+          alt="image not found"
+          style="height: 35rem; width: 80%"
+        />
+        <hr />
+        <div class="card-body">
+          <h2 class="card-title"><%=item.title%></h2>
+          <br />
+          <div class="card-text"><%=item.description%></div>
+          <div class="card-text">
+            Price : &#8377;<%=item.price.toLocaleString("en-IN")%>
+          </div>
+          <div class="card-text">Location : <%=item.location%></div>
+          <div class="card-text">Country : <%=item.country%></div>
+          <br />
+          <a
+            href="http://localhost:3000/listings/<%=item.id%>/update"
+            class="btn btn-outline-secondary"
+            >Edit Details</a
+          >
+          <form action="/listings/<%=item.id%>?_method=delete" method="post">
+            <button class="btn btn-outline-danger">delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

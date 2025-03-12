@@ -1,0 +1,81 @@
+<% layout("layouts/boilerplate") -%>
+<head>
+  <link rel="stylesheet" href="/static/css/home.css" />
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <header class="hero text-center text-white d-flex align-items-center">
+    <div class="container">
+      <h1 style="font-size: 5rem">Find Your Perfect Stay</h1>
+      <p class="lead display-6">Book the best hotels at exclusive prices</p>
+    </div>
+  </header>
+
+  <!-- Featured Hotels -->
+  <section class="container my-5 text-center">
+    <h2 class="mb-4">Featured Hotels</h2>
+    <div class="row">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <img
+            src="/static/images/beach.jpg"
+            class="card-img-top"
+            alt="Luxury Hotel"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Luxury Hotel</h5>
+            <p class="card-text">5-star luxury with a beachfront view.</p>
+            <span class="price text-secondary">$250/night</span>
+            <button class="btn btn-outline-secondary w-100 mt-2">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <img
+            src="/static/images/city.jpg"
+            class="card-img-top"
+            alt="City Hotel"
+          />
+          <div class="card-body">
+            <h5 class="card-title">City Hotel</h5>
+            <p class="card-text">Located in the heart of the city.</p>
+            <span class="price text-secondary">$180/night</span>
+            <button class="btn btn-outline-secondary w-100 mt-2">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <img
+            src="/static/images/home.jpg"
+            class="card-img-top"
+            alt="Mountain Resort"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Mountain Resort</h5>
+            <p class="card-text">Escape to nature and relax.</p>
+            <span class="price text-secondary">$200/night</span>
+            <button class="btn btn-outline-secondary w-100 mt-2">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta text-white text-center py-5">
+    <div class="container">
+      <h2>Plan Your Next Adventure</h2>
+      <p class="lead">Book your stay now and enjoy exclusive deals.</p>
+      <a href="/listings" class="btn btn-outline-light btn-lg">Explore More</a>
+    </div>
+  </section>
+</body>

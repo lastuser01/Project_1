@@ -1,0 +1,26 @@
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const listingSchema = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: String,
+  image: {
+    type: String,
+    default:
+      "https://www.dellaresorts.com/new-images/new-camp-della-exterior-v4.webp",
+    set: (v) =>
+      v === ""
+        ? "https://www.dellaresorts.com/new-images/new-camp-della-exterior-v4.webp"
+        : v,
+  },
+  price: Number,
+  location: String,
+  country: String,
+});
+
+const Listing = mongoose.model("Listing", listingSchema);
+module.exports = Listing;

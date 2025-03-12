@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate")-%>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br />
+      <h1>Edit Details</h1>
+      <br />
+      <form action="/listings/<%=post.id%>?_method=patch" method="post">
+        <div class="row mb-3">
+          <label for="title" class="col-sm-2 col-form-label">title</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="listing[title]"
+              value="<%=post.title%>"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="description" class="col-sm-2 col-form-label"
+            >description</label
+          >
+          <div class="col-sm-10">
+            <textarea
+              rows="4"
+              class="form-control"
+              id="description"
+              name="listing[description]"
+              required
+            >
+<%=post.description%></textarea
+            >
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="image" class="col-sm-2 col-form-label"
+            >image URL/Link</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="image"
+              name="listing[image]"
+              value="<%=post.image%>"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="row col mb-3">
+            <label for="Price" class="col-sm-4 col-form-label">Price</label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="Price"
+                name="listing[price]"
+                value="<%=post.price%>"
+                required
+              />
+            </div>
+          </div>
+          <div class="row col mb-3">
+            <div class="col-sm-1"></div>
+            <label for="location" class="col-sm-3 col-form-label"
+              >location</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                name="listing[location]"
+                value="<%=post.location%>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="Country" class="col-sm-2 col-form-label">Country</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="Country"
+              name="listing[country]"
+              value="<%=post.country%>"
+              required
+            />
+          </div>
+        </div>
+        <br />
+        <button class="btn btn-outline-secondary btn-lg">Save</button>
+      </form>
+    </div>
+  </div>
+</body>
