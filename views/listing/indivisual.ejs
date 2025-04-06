@@ -2,18 +2,23 @@
 <body>
   <div class="container">
     <div class="card mb-3 mx-3 my-3">
-      <h1 class="offset-3"><%=item.title%></h1>
       <div class="p-3">
+        <!-----------------------------------image----------------------------------->
+        <h1><%=item.title%></h1>
+        <br />
         <img
-          class="img rounded mx-auto d-block"
+          class="card-img-top img rounded mx-auto d-block"
           src="<%=item.image%>"
           alt="image not found"
-          style="height: 35rem; width: 80%"
+          style="height: 25rem; width: 50%"
         />
+        <br />
         <hr />
+
+        <!----------------------------------- listing description----------------------------------->
         <div class="card-body">
-          <h2 class="card-title"><%=item.title%></h2>
-          <br />
+          <!-- <h2 class="card-title"><%=item.title%></h2> -->
+
           <div class="card-text"><%=item.description%></div>
           <div class="card-text">
             Price : &#8377;<%=item.price.toLocaleString("en-IN")%>
@@ -35,7 +40,68 @@
               <button class="btn btn-outline-danger">delete</button>
             </form>
           </div>
-          <br /><br />
+          <br />
+          <hr />
+
+          <!----------------------------------- listing offerings----------------------------------->
+
+          <h3>What this place offers</h3>
+          <br />
+          <div class="row">
+            <div class="col-4">
+              <div class="row">
+                <span class="material-symbols-outlined col-1">
+                  restaurant
+                </span>
+                <div class="col">kitchen</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1">
+                  table_lamp
+                </span>
+                <div class="col">Dedicated workspace</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1"> tv </span>
+                <div class="col">TV</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1"> ac_unit </span>
+                <div class="col">Air conditioning</div>
+              </div>
+            </div>
+            <br />
+            <div class="col-4">
+              <div class="row">
+                <span class="material-symbols-outlined col-1"> wifi </span>
+                <div class="col">Wifi</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1">
+                  directions_car
+                </span>
+                <div class="col">Free parking on premises</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1"> elevator </span>
+                <div class="col">Lift</div>
+              </div>
+              <br />
+              <div class="row">
+                <span class="material-symbols-outlined col-1"> yard </span>
+                <div class="col">Shared back garden - Fully fenced</div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <hr />
+
+          <!----------------------------------- create review ----------------------------------->
           <h3>Leave a Review</h3>
           <form method="post" action="/listings/<%=item.id%>/reviews">
             <label for="Username" class="form-label">Username</label>
@@ -70,7 +136,13 @@
           </form>
         </div>
         <br />
+
+        <!-----------------------------------all reviews ----------------------------------->
+        <% if(length){%>
         <h3>All reviews</h3>
+        <% } else{ %>
+        <h3>No reviews</h3>
+        <% } %>
         <div class="row">
           <% for(review of item.reviews){ %>
           <div class="card col-3 border m-3">

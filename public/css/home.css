@@ -1,7 +1,9 @@
 /* Hero Section */
 body {
-    background: url('/static/images/mountain.jpg') no-repeat center center/cover;
-    backdrop-filter: blur(3px);
+    /* background: url('/static/images/city.jpg'); */
+    background-color: lightsteelblue;
+    background-size: contain;
+    backdrop-filter: blur(10px);
 }
 
 .hero {

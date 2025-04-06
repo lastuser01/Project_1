@@ -10,6 +10,7 @@ router.get("/new",(req,res)=>{
 router.get("/",WrapAsync(
     async (req,res)=>{
         let items=await Listing.find({});
+
         res.render("./listing/index.ejs",{items})
     })
 ) 
@@ -20,7 +21,8 @@ router.get("/:id",WrapAsync(
         let { id } = req.params;
         let item = await Listing.findById(id).populate("reviews");
         if (!item) return res.status(404).send("Listing not found");
-        res.render("./listing/indivisual.ejs", { item });
+        let length=item.reviews.length;
+        res.render("./listing/indivisual.ejs", { item ,length});
     }));
 
 
@@ -39,7 +41,8 @@ router.post("/",WrapAsync(
                 */
         const listing=req.body.listing;
         let newlisting = new Listing(listing)
-        newlisting.save().then(res=>console.log(res)).catch(err=>console.log(err))
+        await newlisting.save().catch(err=>console.log(err))
+        req.flash("newlisting","new listing created!")
         res.redirect("http://localhost:3000/listings")
     })
 ) 
@@ -48,9 +51,7 @@ router.post("/search",WrapAsync(
     async (req,res)=>{
         let search=req.body.search
         let items=await Listing.find({$or:[{location:search},{country:search}]});
-      
         if(items == ""  ){
-        console.log(items)
         res.render("./listing/err.ejs",{message:"no result found!!"})
         } 
         else res.render("./listing/index.ejs",{items})

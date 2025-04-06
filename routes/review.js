@@ -25,6 +25,8 @@ router.post("/",validatereview,WrapAsync(async(req,res)=>{
 
     await n_review.save()
     await listing.save()
+
+    req.flash("newreview","review successfully created !!")
     res.redirect(`/listings/${id}`);
     
     

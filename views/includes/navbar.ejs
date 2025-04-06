@@ -1,0 +1,102 @@
+<body>
+  <nav
+    class="navbar navbar-expand-lg border-body sticky-top"
+    data-bs-theme="dark"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand offset-1" href="/"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          width="40px"
+          height="40px"
+          viewBox="0,0,256,256"
+        >
+          <g
+            fill="#1eb7e5"
+            fill-rule="nonzero"
+            stroke="none"
+            stroke-width="1"
+            stroke-linecap="butt"
+            stroke-linejoin="miter"
+            stroke-miterlimit="10"
+            stroke-dasharray=""
+            stroke-dashoffset="0"
+            font-family="none"
+            font-weight="none"
+            font-size="none"
+            text-anchor="none"
+            style="mix-blend-mode: normal"
+          >
+            <g transform="scale(5.33333,5.33333)">
+              <path
+                d="M28.465,38.611c0.419,-1.105 0.664,-2.365 0.664,-3.714c0,-4.133 -2.211,-7.494 -4.929,-7.494c-2.741,0 -4.951,3.361 -4.951,7.494c0,1.326 0.221,2.586 0.641,3.669c-9.041,0.951 -15.407,4.731 -17.993,6.432c4.355,-6.278 8.909,-13.638 13.262,-22.105c1.083,-2.101 2.101,-4.178 3.05,-6.211c0.375,0.243 0.751,0.509 1.171,0.775c1.945,1.215 3.759,1.879 5.084,2.233c-0.973,-0.73 -2.033,-1.613 -3.116,-2.697c-0.817,-0.817 -1.547,-1.637 -2.167,-2.433c1.835,-4.022 3.427,-7.891 4.819,-11.56c2.32,6.144 5.217,12.842 8.841,19.893c2.343,4.531 4.731,8.754 7.117,12.644c-0.685,-0.375 -1.437,-0.73 -2.233,-1.039c-1.371,-0.53 -2.652,-0.862 -3.759,-1.06c1.503,0.751 3.25,1.747 5.084,3.073c1.194,0.885 2.254,1.769 3.161,2.631c0.021,0.021 0.021,0.021 0.045,0.045c1.26,2.056 2.565,3.957 3.846,5.813c-2.541,-1.681 -8.796,-5.395 -17.637,-6.389z"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings">All listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings">contact us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              more
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="/listings/new">Add new</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form
+          class="d-flex nav-search col-md-6"
+          role="search"
+          method="post"
+          action="/listings/search"
+        >
+          <input
+            class="form-control me-5"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="search"
+          />
+          <button class="btn btn-outline-light">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</body>
