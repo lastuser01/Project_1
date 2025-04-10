@@ -4,7 +4,13 @@ const WrapAsync=require("../public/js/WrapAsync");
 let Listing=require("../models/Listings.js");
 
 router.get("/new",(req,res)=>{
-    res.render("./listing/new.ejs",{})
+    if(req.isAuthenticated()){
+        res.render("./listing/new.ejs",{})
+    }
+    else{
+        req.flash("error","Oops! Login required to create a post.")
+        res.redirect("/user/login")
+    }
 })
 
 router.get("/",WrapAsync(
@@ -46,7 +52,7 @@ router.post("/",WrapAsync(
         const listing=req.body.listing;
         let newlisting = new Listing(listing)
         await newlisting.save().catch(err=>console.log(err))
-        req.flash("newlisting","New listing created !!")
+        req.flash("success","New listing created !!")
         res.redirect("http://localhost:3000/listings")
     })
 ) 
@@ -82,7 +88,7 @@ router.delete("/:id",WrapAsync(
     async (req,res)=>{
         let {id}=req.params;
         await Listing.findByIdAndDelete(id);
-        req.flash("deletedlisting","Listing deleted !!")
+        req.flash("error","Listing deleted !!")
         res.redirect("http://localhost:3000/listings")
     })
 ) 

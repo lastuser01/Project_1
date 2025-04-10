@@ -1,0 +1,103 @@
+body {
+    background: url("https://plus.unsplash.com/premium_photo-1674478876962-6703253531c4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    color: #fff;
+    backdrop-filter: blur(40px);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.left-panel {
+    background: url('https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+.left-panel h2 {
+    font-size: 1.5rem;
+    margin-top: auto;
+}
+
+.form-control,
+.btn {
+    border-radius: 10px;
+    border-color: white;
+    background-color: transparent;
+}
+
+.navbar-search {
+    background-color: #11111143;
+    border: none;
+}
+
+.form-control:focus,
+.form-control:active {
+    background-color: transparent;
+    box-shadow: 0px 0px 15px #ffffff5d;
+    border-color: #fff;
+}
+
+.btn-purple {
+    border: 2px solid #805AD5;
+    color: #2d2638;
+}
+
+.btn-purple:hover {
+    background-color: #6B46C1;
+}
+
+.btn-sm:hover {
+    background-color: #ffffff26;
+}
+
+.social-btn {
+    border: 1.5px solid white;
+    color: white;
+}
+
+.social-btn:hover {
+    border: 1.5px solid white;
+    background-color: #ffffff2d;
+    color: white;
+}
+
+.back-button {
+    border-color: #805AD5 !important;
+}
+
+.form-check-input:checked {
+    background-color: #805AD5;
+    border-color: #805AD5;
+}
+
+.form-check-label a {
+    color: #2d2638;
+    text-decoration: underline;
+}
+
+.form-check-label a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .left-panel {
+        display: none;
+    }
+
+    .card {
+        border-radius: 0;
+    }
+
+    .btn,
+    .form-control {
+        font-size: 1rem;
+    }
+}

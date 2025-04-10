@@ -1,0 +1,116 @@
+<% layout("./layouts/boilerplate") -%>
+<head>
+  <link rel="stylesheet" href="/static/css/signup.css" />
+</head>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-100">
+      <div class="col-lg-10 mx-auto">
+        <div class="card shadow-lg">
+          <div class="row g-0">
+            <!-- Left Panel (Hidden on mobile) -->
+            <div class="col-md-6 left-panel d-none d-md-flex">
+              <div>
+                <a
+                  href="/"
+                  class="text-light btn btn-sm btn-outline-light offset-8 mb-5"
+                  >Back to website →</a
+                >
+              </div>
+              <h2 class="lead text-center">
+                Because every great journey begins<br />with the perfect stay
+              </h2>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="col-md-6 p-5">
+              <h3 class="mb-3 text-center">Create an account</h3>
+              <form action="/user/signup" method="post">
+                <div class="row mb-3">
+                  <div class="col-12 col-md-6 mb-3 mb-md-0">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First name"
+                      name="fname"
+                      required
+                    />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Last name"
+                      name="lname"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="username"
+                    name="username"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    name="email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="terms"
+                    checked
+                    required
+                  />
+                  <label class="form-check-label" for="terms">
+                    I agree to the <a href="#">Terms & Conditions</a>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-purple w-100 mb-3">
+                  Create account
+                </button>
+                <p class="mb-4">
+                  Already have an account?
+                  <a href="#" class="text-decoration-underline text-dark"
+                    >Log in</a
+                  >
+                </p>
+                <hr class="my-4" />
+                <p class="text-center mb-3">Or register with</p>
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                  <button type="button" class="btn social-btn w-100">
+                    <img
+                      src="https://img.icons8.com/color/16/000000/google-logo.png"
+                      class="me-2"
+                    />
+                    Google
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

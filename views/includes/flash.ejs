@@ -1,48 +1,9 @@
-<%if(newlisting && newlisting.length){ %>
+<%if(success && success.length){ %>
 <div
   class="alert alert-success text-center alert-dismissible fade show col-6 offset-3"
   role="alert"
 >
-  <%= newlisting %>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
-<%}%> <%if(newreview && newreview.length){ %>
-<div
-  class="alert alert-success text-center alert-dismissible fade show col-6 offset-3"
-  role="alert"
->
-  <%= newreview %>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
-<%}%> <%if(reviewdeleted && reviewdeleted.length){ %>
-<div
-  class="alert alert-success text-center alert-dismissible fade show col-6 offset-3"
-  role="alert"
->
-  <%= reviewdeleted %>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
-<%}%><%if(deletedlisting && deletedlisting.length){ %>
-<div
-  class="alert alert-success text-center alert-dismissible fade show col-6 offset-3"
-  role="alert"
->
-  <%= deletedlisting %>
+  <div><%= success %></div>
   <button
     type="button"
     class="btn-close"
@@ -52,7 +13,7 @@
 </div>
 <%}%> <%if(error && error.length){ %>
 <div
-  class="alert alert-success text-center alert-dismissible fade show col-6 offset-3"
+  class="alert alert-danger text-center alert-dismissible fade show col-6 offset-3"
   role="alert"
 >
   <%= error %>

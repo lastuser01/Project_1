@@ -9,13 +9,18 @@
     backdrop-filter: blur(20px) !important
 }
 
+.nav-link:hover {
+    color: white;
+}
+
+
 .nav-search {
     margin-right: auto !important;
 }
 
 .me-5 {
     background-color: rgba(8, 8, 8, 0.5);
-    border: none;
+    border: 1px solid gray;
 }
 
 .dropdown-menu {

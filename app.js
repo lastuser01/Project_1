@@ -6,11 +6,30 @@ let path=require("path");
 let methodOverride=require("method-override")
 let engine=require("ejs-mate");
 let ExpressError=require("./public/js/ExpressError.js")
-let listings=require("./routes/listing.js");
-let review=require("./routes/review.js")
+
+let listingRouter=require("./routes/listing.js");
+let reviewRouter=require("./routes/review.js")
+const userRouter=require("./routes/user.js")
+
 let session=require("express-session")
 const flash=require("connect-flash");
+const passport=require("passport");
+const LocalStrategy=require("passport-local")
+const User=require("./models/user.js")
 
+main().then(()=>{console.log("connected")}).catch(err=>console.log(err))
+
+async function main(){
+    await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
+}
+
+
+app.use(methodOverride("_method"))
+app.use(express.urlencoded({extended:true}))
+app.use('/static', express.static(path.join(__dirname, 'public')))
+app.set("views",path.join(__dirname,"views"));
+app.set("view engine","ejs");
+app.engine("ejs",engine);
 
 const sessionOptions={
     resave:false,
@@ -25,28 +44,17 @@ const sessionOptions={
 
 app.use(flash())
 app.use(session(sessionOptions))
-app.use(methodOverride("_method"))
-app.use(express.urlencoded({extended:true}))
-app.use('/static', express.static(path.join(__dirname, 'public')))
-app.set("views",path.join(__dirname,"views"));
-app.set("view engine","ejs");
-app.engine("ejs",engine);
 
+app.use(passport.initialize());
+app.use(passport.session());
 
-main().then(()=>{console.log("connected")}).catch(err=>console.log(err))
-
-async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
-}
-
-
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
-    res.locals.newlisting=req.flash("newlisting");
-    res.locals.newreview=req.flash("newreview");
-    res.locals.reviewdeleted=req.flash("reviewdeleted");
-    res.locals.deletedlisting=req.flash("deletedlisting")
-    res.locals.error=req.flash("error")
+    res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
     next();
 })
 
@@ -54,8 +62,18 @@ app.get("/",(req,res)=>{
     res.render("./listing/home.ejs")
 })
 
-app.use("/listings/:id/reviews",review)
-app.use("/listings",listings);
+app.get("/demouser",async (req,res)=>{
+    let fakeuser=new User({
+        email:"fake@gmail.com",
+        username:"fake17"
+    })
+    let newuser=await User.register(fakeuser,"fake17");
+    res.send(newuser);
+})
+
+app.use("/listings/:id/reviews",reviewRouter)
+app.use("/listings",listingRouter);
+app.use("/user",userRouter);
 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(500,"no such route found !"))
