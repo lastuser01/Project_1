@@ -44,6 +44,9 @@ async function main(){
 app.use((req,res,next)=>{
     res.locals.newlisting=req.flash("newlisting");
     res.locals.newreview=req.flash("newreview");
+    res.locals.reviewdeleted=req.flash("reviewdeleted");
+    res.locals.deletedlisting=req.flash("deletedlisting")
+    res.locals.error=req.flash("error")
     next();
 })
 

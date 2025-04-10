@@ -20,7 +20,11 @@ router.get("/:id",WrapAsync(
     async (req, res, next) => {
         let { id } = req.params;
         let item = await Listing.findById(id).populate("reviews");
-        if (!item) return res.status(404).send("Listing not found");
+        if (!item){
+            // res.status(404).send("Listing not found");
+            req.flash("error","listing you requested for does not exist !!")
+            res.redirect("/listings");
+        }
         let length=item.reviews.length;
         res.render("./listing/indivisual.ejs", { item ,length});
     }));
@@ -42,7 +46,7 @@ router.post("/",WrapAsync(
         const listing=req.body.listing;
         let newlisting = new Listing(listing)
         await newlisting.save().catch(err=>console.log(err))
-        req.flash("newlisting","new listing created!")
+        req.flash("newlisting","New listing created !!")
         res.redirect("http://localhost:3000/listings")
     })
 ) 
@@ -78,6 +82,7 @@ router.delete("/:id",WrapAsync(
     async (req,res)=>{
         let {id}=req.params;
         await Listing.findByIdAndDelete(id);
+        req.flash("deletedlisting","Listing deleted !!")
         res.redirect("http://localhost:3000/listings")
     })
 ) 
