@@ -25,12 +25,12 @@
 
             <!-- Right Panel -->
             <div class="col-md-6 p-5">
-              <h3 class="mb-3 text-center">Login</h3>
+              <h3 class="mb-3 text-center text-light">Login</h3>
               <form action="/user/login" method="post">
                 <div class="mb-3">
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control input"
                     placeholder="username"
                     name="username"
                     required
@@ -39,7 +39,7 @@
                 <div class="mb-3">
                   <input
                     type="password"
-                    class="form-control"
+                    class="form-control input"
                     placeholder="Enter your password"
                     name="password"
                     required
@@ -53,18 +53,18 @@
                     checked
                     required
                   />
-                  <label class="form-check-label" for="terms">
+                  <label class="form-check-label text-light" for="terms">
                     I agree to the <a href="#">Terms & Conditions</a>
                   </label>
                 </div>
                 <button
                   type="submit"
-                  class="btn btn-purple text-dark w-100 mb-3"
+                  class="btn btn-purple text-light w-100 mb-3"
                 >
                   Login
                 </button>
                 <hr class="my-4" />
-                <p class="text-center mb-3">Or register with</p>
+                <p class="text-center mb-3 text-light">Or register with</p>
                 <div class="d-flex flex-column flex-sm-row gap-2">
                   <button type="button" class="btn social-btn w-100">
                     <img

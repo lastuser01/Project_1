@@ -1,16 +1,11 @@
 const express=require("express");
-const router=express.Router();
+const router=express.Router({mergeParams:true});
 const WrapAsync=require("../public/js/WrapAsync");
 let Listing=require("../models/Listings.js");
+const {isLoggedIn}=require("../middlewares/isloggedin.js")
 
-router.get("/new",(req,res)=>{
-    if(req.isAuthenticated()){
+router.get("/new",isLoggedIn,(req,res)=>{
         res.render("./listing/new.ejs",{})
-    }
-    else{
-        req.flash("error","Oops! Login required to create a post.")
-        res.redirect("/user/login")
-    }
 })
 
 router.get("/",WrapAsync(
@@ -21,6 +16,15 @@ router.get("/",WrapAsync(
     })
 ) 
 
+router.get("/search",WrapAsync(
+    async (req,res)=>{
+        let {value}=req.query;
+        let items=await Listing.find({$or:[{location:value},{country:value}]});
+        if(items == ""  ){
+        res.render("./listing/err.ejs",{message:"no result found!!"})
+        } 
+        else res.render("./listing/index.ejs",{items})
+    }))
 
 router.get("/:id",WrapAsync(
     async (req, res, next) => {
@@ -36,7 +40,7 @@ router.get("/:id",WrapAsync(
     }));
 
 
-router.post("/",WrapAsync(
+router.post("/",isLoggedIn,WrapAsync(
     async (req,res)=>{
         /*
         let {title,description,image,price,location,country}=req.body;
@@ -57,17 +61,7 @@ router.post("/",WrapAsync(
     })
 ) 
 
-router.post("/search",WrapAsync(
-    async (req,res)=>{
-        let search=req.body.search
-        let items=await Listing.find({$or:[{location:search},{country:search}]});
-        if(items == ""  ){
-        res.render("./listing/err.ejs",{message:"no result found!!"})
-        } 
-        else res.render("./listing/index.ejs",{items})
-    }))
-
-router.get("/:id/update",WrapAsync(
+router.get("/:id/update",isLoggedIn,WrapAsync(
     async (req,res)=>{
         let {id}=req.params;
         let post=await Listing.findById(id)
@@ -84,7 +78,7 @@ router.patch("/:id",WrapAsync(
     })
 ) 
 
-router.delete("/:id",WrapAsync(
+router.delete("/:id",isLoggedIn,WrapAsync(
     async (req,res)=>{
         let {id}=req.params;
         await Listing.findByIdAndDelete(id);

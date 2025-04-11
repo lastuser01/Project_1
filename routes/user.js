@@ -28,9 +28,21 @@ router.get("/login",(req,res)=>{
 })
 
 router.post("/login",passport.authenticate('local',{failureRedirect:"/user/login" ,failureFlash:true}),WrapAsync(async (req,res)=>{
-        req.flash("success","logged in !!")
+        req.flash("success","Welcome back, jetsetter! Time to treat yourself to a sweet stay ! 🛬🍹")
         res.redirect("/");
     
 }))
+
+router.get("/logout",(req,res,next)=>{
+    req.logout((err)=>{
+        if(err){
+            next(err);
+        }
+        else{
+            req.flash("success","Poof! You vanished . log back in to reappear 🪄")
+            res.redirect("/listings")
+        }
+    })
+})
 
 module.exports=router;

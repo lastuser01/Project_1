@@ -4,6 +4,7 @@ let Review=require("../models/Reviews.js")
 let Listing=require("../models/Listings.js");
 let {review_schema}=require("../schema.js")
 const WrapAsync=require("../public/js/WrapAsync");
+const {isLoggedIn}=require("../middlewares/isloggedin.js")
 
 const validatereview=(req,res,next)=>{
     let {error}=review_schema.validate(req.body)
@@ -17,7 +18,7 @@ const validatereview=(req,res,next)=>{
 }
 
 
-router.post("/",validatereview,WrapAsync(async(req,res)=>{
+router.post("/",isLoggedIn,validatereview,WrapAsync(async(req,res)=>{
     let{ id}=req.params;
     let listing=await Listing.findById(id);
     let n_review=new Review(req.body.review);
@@ -32,7 +33,7 @@ router.post("/",validatereview,WrapAsync(async(req,res)=>{
     
 }))
 
-router.delete("/:reviewid",WrapAsync(async (req,res)=>{
+router.delete("/:reviewid",isLoggedIn,WrapAsync(async (req,res)=>{
     let {id,reviewid}=req.params;
     await Listing.findByIdAndUpdate(id,{$pull:{reviewid}})
     await Review.findByIdAndDelete(reviewid)
