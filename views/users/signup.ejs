@@ -25,13 +25,13 @@
 
             <!-- Right Panel -->
             <div class="col-md-6 p-5">
-              <h3 class="mb-3 text-center">Create an account</h3>
+              <h3 class="mb-3 text-center text-light">Create an account</h3>
               <form action="/user/signup" method="post">
                 <div class="row mb-3">
                   <div class="col-12 col-md-6 mb-3 mb-md-0">
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control input"
                       placeholder="First name"
                       name="fname"
                       required
@@ -40,7 +40,7 @@
                   <div class="col-12 col-md-6">
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control input"
                       placeholder="Last name"
                       name="lname"
                       required
@@ -50,7 +50,7 @@
                 <div class="mb-3">
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control input"
                     placeholder="username"
                     name="username"
                     required
@@ -59,7 +59,7 @@
                 <div class="mb-3">
                   <input
                     type="email"
-                    class="form-control"
+                    class="form-control input"
                     placeholder="Email"
                     name="email"
                     required
@@ -68,7 +68,7 @@
                 <div class="mb-3">
                   <input
                     type="password"
-                    class="form-control"
+                    class="form-control input"
                     placeholder="Enter your password"
                     name="password"
                     required
@@ -91,7 +91,9 @@
                 </button>
                 <p class="mb-4">
                   Already have an account?
-                  <a href="#" class="text-decoration-underline text-dark"
+                  <a
+                    href="/user/login"
+                    class="text-decoration-underline text-dark"
                     >Log in</a
                   >
                 </p>

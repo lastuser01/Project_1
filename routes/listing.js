@@ -21,7 +21,8 @@ router.get("/search",WrapAsync(
         let {value}=req.query;
         let items=await Listing.find({$or:[{location:value},{country:value}]});
         if(items == ""  ){
-        res.render("./listing/err.ejs",{message:"no result found!!"})
+        req.flash("error","Enter something to search !")
+        res.redirect("/listings")
         } 
         else res.render("./listing/index.ejs",{items})
     }))
@@ -29,7 +30,7 @@ router.get("/search",WrapAsync(
 router.get("/:id",WrapAsync(
     async (req, res, next) => {
         let { id } = req.params;
-        let item = await Listing.findById(id).populate("reviews");
+        let item = await Listing.findById(id).populate("reviews").populate("admin");
         if (!item){
             // res.status(404).send("Listing not found");
             req.flash("error","listing you requested for does not exist !!")
@@ -55,6 +56,7 @@ router.post("/",isLoggedIn,WrapAsync(
                 */
         const listing=req.body.listing;
         let newlisting = new Listing(listing)
+        newlisting.admin=req.user._id;
         await newlisting.save().catch(err=>console.log(err))
         req.flash("success","New listing created !!")
         res.redirect("http://localhost:3000/listings")

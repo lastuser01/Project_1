@@ -49,3 +49,12 @@
 .container {
     width: 100vw;
 }
+
+.alert {
+    background-color: rgba(0, 0, 0, 0.17) !important;
+    border-radius: 40px;
+}
+
+.alert-danger {
+    background-color: rgba(255, 0, 0, 0.104) !important;
+}

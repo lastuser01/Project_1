@@ -67,3 +67,9 @@ body {
     border-radius: 2rem;
     background: linear-gradient(135deg, #333, #555);
 }
+
+
+.alert {
+    background-color: rgba(0, 0, 0, 0.17) !important;
+    border-radius: 40px;
+}
