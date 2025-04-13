@@ -2,16 +2,19 @@ const mongoose=require("mongoose");
 let {Schema}=mongoose;
 
 let review_schema=new Schema({
-    username:String,
+    author:{
+        type:Schema.Types.ObjectId,
+        ref:"User"
+    },
     comment:String,
     rating:{
-        type:String,
+        type:Number,
         min:1,
         max:5
     },
     created_at:{
         type:Date,
-        defalut:new Date()
+        default:new Date()
     }
 })
 

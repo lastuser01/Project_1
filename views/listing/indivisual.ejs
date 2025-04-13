@@ -26,6 +26,7 @@
           <div class="card-text">Location : <%=item.location%></div>
           <div class="card-text">Country : <%=item.country%></div>
           <br />
+          <%if(currUser&&currUser._id.equals(item.admin._id)){%>
           <div class="row">
             <a
               href="http://localhost:3000/listings/<%=item.id%>/update"
@@ -41,6 +42,7 @@
             </form>
           </div>
           <br />
+          <%}%>
           <hr />
           <div class="d-flex align-items-center">
             <i class="bi bi-person-circle fs-3 text-secondary"></i>
@@ -108,17 +110,35 @@
           </div>
           <br />
           <hr />
+          <!----------------------------------- google maps ----------------------------------->
+          <h3 class="lead">📍 We’re Here!</h3>
+          <br />
+
+          <iframe
+            width="100%"
+            height="450"
+            style="border: 0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=<%=item.location%>+<%=item.country%>&output=embed"
+          ></iframe>
 
           <!----------------------------------- create review ----------------------------------->
+          <br />
+          <br />
+          <hr />
+          <%if(currUser){%>
           <h3>Leave a Review</h3>
           <form method="post" action="/listings/<%=item.id%>/reviews">
             <label for="Username" class="form-label">Username</label>
             <input
               type="text"
-              name="review[username]"
               id="username"
+              name="review[author]"
               class="form-control col-6"
-              required
+              value="<%=currUser.username%>"
+              readonly
             />
             <label for="rating" class="form-label">Rating</label>
             <input
@@ -142,6 +162,7 @@
             ><br />
             <button class="btn btn-outline-secondary">submit</button>
           </form>
+          <%}%>
         </div>
         <br />
 
@@ -155,18 +176,20 @@
           <% for(review of item.reviews){ %>
           <div class="card col-3 border m-3">
             <div class="card-body">
-              <div class="card-title">@<%=review.username%></div>
+              <div class="card-title">@<%=review.author.username%></div>
               <% let a=review.rating %> <% for(i=1;i<=a;i++){ %>
               <span class="card-text">⭐</span>
               <%}%>
               <div class="card-text"><%=review.comment%></div>
               <br />
+              <% if(currUser && currUser._id.equals(review.author._id)){%>
               <form
                 action="/listings/<%=item.id%>/reviews/<%=review.id%>?_method=delete"
                 method="post"
               >
                 <button class="btn btn-outline-danger b-3">delete</button>
               </form>
+              <%}%>
             </div>
           </div>
           <% } %>

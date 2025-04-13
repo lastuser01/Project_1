@@ -63,15 +63,6 @@ app.get("/",(req,res)=>{
     res.render("./listing/home.ejs")
 })
 
-app.get("/demouser",async (req,res)=>{
-    let fakeuser=new User({
-        email:"fake@gmail.com",
-        username:"fake17"
-    })
-    let newuser=await User.register(fakeuser,"fake17");
-    res.send(newuser);
-})
-
 app.use("/listings/:id/reviews",reviewRouter)
 app.use("/listings",listingRouter);
 app.use("/user",userRouter);
