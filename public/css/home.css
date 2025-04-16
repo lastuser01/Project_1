@@ -3,12 +3,11 @@ body {
     /* background: url('/static/images/city.jpg'); */
     background-color: lightsteelblue;
     background-size: contain;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(80px); */
 }
 
 .hero {
     margin-top: 20px;
-
     height: 50vh;
     position: relative;
     display: flex;

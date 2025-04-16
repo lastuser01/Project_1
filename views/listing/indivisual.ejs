@@ -140,16 +140,56 @@
               value="<%=currUser.username%>"
               readonly
             />
-            <label for="rating" class="form-label">Rating</label>
-            <input
-              type="range"
-              name="review[rating]"
-              min="1"
-              max="5"
-              id="rating"
-              class="form-range col-6"
-              required
-            />
+            <br />
+            <label for="no-rate">Rating :</label>
+            <fieldset class="starability-slot">
+              <br />
+              <input
+                type="radio"
+                id="no-rate"
+                class="input-no-rate"
+                name="review[rating]"
+                value="1"
+                checked
+                aria-label="No rating."
+              />
+              <input
+                type="radio"
+                id="first-rate1"
+                name="review[rating]"
+                value="1"
+              />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="review[rating]"
+                value="2"
+              />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="review[rating]"
+                value="3"
+              />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="review[rating]"
+                value="4"
+              />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="review[rating]"
+                value="5"
+              />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+            <br />
             <label for="comment" class="form-label">comment</label>
             <textarea
               type="text"
@@ -167,7 +207,7 @@
         <br />
 
         <!-----------------------------------all reviews ----------------------------------->
-        <% if(length){%>
+        <% if(item.reviews.length>0){%>
         <h3>All reviews</h3>
         <% } else{ %>
         <h3>No reviews</h3>
@@ -177,9 +217,12 @@
           <div class="card col-3 border m-3">
             <div class="card-body">
               <div class="card-title">@<%=review.author.username%></div>
-              <% let a=review.rating %> <% for(i=1;i<=a;i++){ %>
-              <span class="card-text">⭐</span>
-              <%}%>
+
+              <p
+                class="starability-result"
+                data-rating="<%=review.rating%>"
+              ></p>
+
               <div class="card-text"><%=review.comment%></div>
               <br />
               <% if(currUser && currUser._id.equals(review.author._id)){%>

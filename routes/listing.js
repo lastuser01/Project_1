@@ -6,20 +6,19 @@ const {isAdmin}=require("../middlewares/isloggedin.js");
 const ListingController = require("../controllers/listing.js");
 
 
-router.get("/",WrapAsync(ListingController.index)) 
+router.route("/")
+        .get(WrapAsync(ListingController.index)) 
+        .post(isLoggedIn,WrapAsync(ListingController.createListing)) 
 
 router.get("/new",isLoggedIn,ListingController.rendernewForm)
 
 router.get("/search",WrapAsync(ListingController.renderSearchForm))
 
-router.get("/:id",WrapAsync(ListingController.renderIndivisualListing));
-
-router.post("/",isLoggedIn,WrapAsync(ListingController.createListing)) 
-
 router.get("/:id/update",isLoggedIn,WrapAsync(ListingController.renderUpdateForm)) 
 
-router.patch("/:id",isLoggedIn,isAdmin,WrapAsync(ListingController.updateListing)) 
-
-router.delete("/:id",isLoggedIn,isAdmin,WrapAsync(ListingController.deleteListing)) 
+router.route("/:id")
+    .get(WrapAsync(ListingController.renderIndivisualListing))
+    .patch(isLoggedIn,isAdmin,WrapAsync(ListingController.updateListing)) 
+    .delete(isLoggedIn,isAdmin,WrapAsync(ListingController.deleteListing)) 
 
 module.exports=router;

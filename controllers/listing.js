@@ -45,12 +45,13 @@ module.exports.createListing=async (req,res)=>{
             await Listing.insertOne(article)
     }
             */
-    const listing=req.body.listing;
-    let newlisting = new Listing(listing)
-    newlisting.admin=req.user._id;
-    await newlisting.save().catch(err=>console.log(err))
-    req.flash("success","New listing created !!")
-    res.redirect("http://localhost:3000/listings")
+    // const listing=req.body.listing;
+    // let newlisting = new Listing(listing)
+    // newlisting.admin=req.user._id;
+    // await newlisting.save().catch(err=>console.log(err))
+    // req.flash("success","New listing created !!")
+    // res.redirect("http://localhost:3000/listings")
+    res.send(req.body)
 }
 
 
