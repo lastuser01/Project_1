@@ -1,3 +1,9 @@
+if(process.env.NODE_ENV!="Production"){
+    require("dotenv").config()
+}
+console.log(process.env.ATLASDB_URL)
+
+
 const express=require("express");
 const app=express();
 const port=3000;
@@ -12,15 +18,18 @@ let reviewRouter=require("./routes/review.js")
 const userRouter=require("./routes/user.js")
 
 let session=require("express-session")
+const MongoStore = require('connect-mongo');
 const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local")
 const User=require("./models/user.js")
 
+let Db_url=process.env.ATLASDB_URL;
+
 main().then(()=>{console.log("connected")}).catch(err=>console.log(err))
 
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/airbnb');
+    await mongoose.connect(Db_url);
 }
 
 
@@ -31,10 +40,24 @@ app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
 app.engine("ejs",engine);
 
+
+const store=MongoStore.create({
+    mongoUrl:Db_url,
+    crypto:{
+        secret:process.env.SECRET
+    },
+    touchAfter:24*3600
+})
+
+store.on("error",()=>{
+    console.log("error in mongo session store",err)
+})
+
 const sessionOptions={
+    store,
     resave:false,
     saveUninitialized:true,
-    secret:"secretcode",
+    secret:process.env.SECRET,
     cookie:{
         expires:Date.now()+7*24*60*60*1000,
         maxAge:7*24*60*60*1000,

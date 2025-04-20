@@ -11,13 +11,8 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    type: String,
-    default:
-      "https://www.dellaresorts.com/new-images/new-camp-della-exterior-v4.webp",
-    set: (v) =>
-      v === ""
-        ? "https://www.dellaresorts.com/new-images/new-camp-della-exterior-v4.webp"
-        : v,
+    url: String,
+    filename:String
   },
   price: Number,
   location: String,

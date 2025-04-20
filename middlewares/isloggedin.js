@@ -9,9 +9,9 @@ module.exports.isLoggedIn=(req,res,next)=>{
         req.flash("error","Let’s get you checked in — log in!")
         res.redirect("/user/login")
     }
-    else{
+    
         next();
-    }
+    
 }
 
 
@@ -41,9 +41,9 @@ module.exports.validatereview=(req,res,next)=>{
         console.log(error);
         throw new ExpressError(400,errmsg);
     }
-    else{
+    
         next()
-    }
+    
 }
 
 

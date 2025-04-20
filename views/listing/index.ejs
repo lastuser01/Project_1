@@ -1,22 +1,112 @@
 <% layout('/layouts/boilerplate')-%>
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .filter {
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.832);
+  }
+  .tax {
+    display: none;
+  }
+
+  .tax-toggle {
+    border: 1.5px solid gray;
+    width: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    height: 50px;
+  }
+</style>
 <body>
+  <div id="filters" class="row">
+    <div class="filter col">
+      <span class="material-symbols-outlined"> local_fire_department </span>
+      <p>Trending</p>
+    </div>
+    <div class="filter col filter-collapse">
+      <span class="material-symbols-outlined"> beach_access </span>
+      <p>Beachfront</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> cottage </span>
+      <p>Cabin</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> hotel </span>
+      <p>Rooms</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> mode_cool </span>
+      <p>Arctic</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> landscape </span>
+      <p>Mountains</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> castle </span>
+      <p>Castle</p>
+    </div>
+    <div class="filter col">
+      <div><span class="material-symbols-outlined"> pool </span></div>
+      <p>Pools</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> camping </span>
+      <p>Camping</p>
+    </div>
+    <div class="filter col">
+      <span class="material-symbols-outlined"> directions_boat </span>
+      <p>boats</p>
+    </div>
+    <div class="col tax-toggle">
+      <div class="form-check form-switch form-check-reverse">
+        <label class="form-check-label text-center" for="switchCheckReverse"
+          >Display taxes</label
+        >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="switchCheckReverse"
+        />
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <div class="row row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <div class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3">
       <%for(item of items){%>
       <a href="/listings/<%=item.id%>" class="cards">
-        <div class="col card all" style="width: 18rem">
+        <div class="col card all" style="width: 21rem">
           <img
-            class="card-img-top rounded mx-auto d-block"
-            src="<%=item.image%>"
+            class="card-img-top mx-auto d-block"
+            src="<%=item.image.url%>"
             alt="image not found"
-            style="width: 18rem; height: 18rem; object-fit: cover"
+            style="
+              width: 24rem;
+              height: 40vh;
+              object-fit: cover;
+              border-radius: 20px;
+            "
           />
 
           <div class="card-body">
             <div class="card-text">
-              <%=item.title%>
+              <b class="fw-medium"> <%=item.title%></b>
+
               <br />
-              &#8377; <%= item.price %> / night
+              &#8377; <%= item.price %> / night &nbsp;<i class="tax">+18%GST</i>
             </div>
           </div>
         </div>
@@ -25,4 +115,23 @@
       <%}%>
     </div>
   </div>
+  <script>
+    let taxswitch = document.getElementById("switchCheckReverse");
+    let show = false;
+    taxswitch.addEventListener("click", () => {
+      if (show == false) {
+        let taxes = document.querySelectorAll(".tax");
+        for (tax of taxes) {
+          tax.style.display = "block";
+        }
+        show = true;
+      } else {
+        let taxes = document.querySelectorAll(".tax");
+        for (tax of taxes) {
+          tax.style.display = "none";
+        }
+        show = false;
+      }
+    });
+  </script>
 </body>

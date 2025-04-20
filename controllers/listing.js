@@ -24,12 +24,13 @@ module.exports.renderIndivisualListing=async (req, res, next) => {
     let { id } = req.params;
     let item = await Listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("admin");
     if (!item){
-        // res.status(404).send("Listing not found");
         req.flash("error","listing you requested for does not exist !!")
         return res.redirect("/listings");
     }
-    let length=item.reviews.length;
-    res.render("./listing/indivisual.ejs", { item ,length});
+    else{
+        let length=item.reviews.length;
+        res.render("./listing/indivisual.ejs", { item ,length});
+    }
 }
 
 
@@ -45,27 +46,39 @@ module.exports.createListing=async (req,res)=>{
             await Listing.insertOne(article)
     }
             */
-    // const listing=req.body.listing;
-    // let newlisting = new Listing(listing)
-    // newlisting.admin=req.user._id;
-    // await newlisting.save().catch(err=>console.log(err))
-    // req.flash("success","New listing created !!")
-    // res.redirect("http://localhost:3000/listings")
-    res.send(req.body)
+    let url=req.file.path;
+    let filename=req.file.filename
+    const listing=req.body.listing;
+    let newlisting = new Listing(listing)
+    newlisting.admin=req.user._id;
+    newlisting.image={url,filename}
+    await newlisting.save().catch(err=>console.log(err))
+    req.flash("success","New listing created !!")
+    res.redirect("http://localhost:3000/listings")
 }
 
 
 module.exports.renderUpdateForm=async (req,res)=>{
     let {id}=req.params;
     let post=await Listing.findById(id)
-   res.render("./listing/update.ejs",{post})
+    let originalImage=post.image.url
+    originalImage=originalImage.replace("/upload","/upload/w_250");
+   res.render("./listing/update.ejs",{post,originalImage})
 }
 
 
 module.exports.updateListing=async (req,res)=>{
     let {id}=req.params;
-    let listing=req.body.listing;
-   await Listing.findByIdAndUpdate(id,listing)
+   let listing=await Listing.findByIdAndUpdate(id,{...req.body.listing})
+   console.log(listing)
+   if(typeof req.file !=="undefined"){
+       console.log(req.file)
+        let url=req.file.path;
+        let filename=req.file.filename;
+        listing.image={url,filename}
+        await listing.save()
+    }
+    req.flash("success","Listing updated!!")
     res.redirect("http://localhost:3000/listings")
 }
 

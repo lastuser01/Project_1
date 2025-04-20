@@ -1,9 +1,3 @@
-.img {
-    /* width: 18rem; */
-    height: 18rem;
-    object-fit: cover;
-}
-
 .navbar {
     background-color: rgba(9, 9, 9, 0.5);
     backdrop-filter: blur(20px) !important
@@ -21,6 +15,7 @@
 .me-5 {
     background-color: rgba(8, 8, 8, 0.5);
     border: 1px solid gray;
+    border-radius: 20px;
 }
 
 .dropdown-menu {
@@ -44,10 +39,6 @@
     text-decoration: none !important;
     display: flex;
     text-align: center;
-}
-
-.container {
-    width: 100vw;
 }
 
 .alert {
