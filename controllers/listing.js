@@ -1,5 +1,5 @@
 const Listing = require("../models/Listings");
-
+const cloudinary = require('cloudinary').v2;
 
 module.exports.index=async (req,res)=>{
     let items=await Listing.find({});
@@ -46,10 +46,12 @@ module.exports.createListing=async (req,res)=>{
             await Listing.insertOne(article)
     }
             */
+           
     let url=req.file.path;
     let filename=req.file.filename
     const listing=req.body.listing;
     let newlisting = new Listing(listing)
+    console.log(req.body.listing)
     newlisting.admin=req.user._id;
     newlisting.image={url,filename}
     await newlisting.save().catch(err=>console.log(err))
@@ -85,6 +87,10 @@ module.exports.updateListing=async (req,res)=>{
 
 module.exports.deleteListing=async (req,res)=>{
     let {id}=req.params;
+    let listing=await Listing.findById(id)
+    if (listing.image.filename) {
+        await cloudinary.uploader.destroy(listing.image.filename);
+      }
     await Listing.findByIdAndDelete(id);
     req.flash("error","Listing deleted !!")
     res.redirect("/listings")

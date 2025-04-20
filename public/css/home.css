@@ -1,9 +1,11 @@
 /* Hero Section */
 body {
-    /* background: url('/static/images/city.jpg'); */
-    background-color: lightsteelblue;
-    background-size: contain;
-    /* backdrop-filter: blur(80px); */
+    background: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdGVsfGVufDB8fDB8fHww');
+    /* background-color: lightsteelblue; */
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    background-attachment: fixed;
+    scroll-behavior: smooth;
 }
 
 .hero {

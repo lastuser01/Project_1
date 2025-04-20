@@ -19,12 +19,12 @@
         <div class="card-body">
           <!-- <h2 class="card-title"><%=item.title%></h2> -->
 
-          <div class="card-text"><%=item.description%></div>
-          <div class="card-text">
-            Price : &#8377;<%=item.price.toLocaleString("en-IN")%>
+          <div class="card-text lead"><%=item.description%></div>
+          <div class="card-text lead text-secondary"><%=item.location%></div>
+          <div class="card-text lead text-secondary"><%=item.country%></div>
+          <div class="card-text lead text-secondary">
+            &#8377;<%=item.price.toLocaleString("en-IN")%>
           </div>
-          <div class="card-text">Location : <%=item.location%></div>
-          <div class="card-text">Country : <%=item.country%></div>
           <br />
           <%if(currUser&&currUser._id.equals(item.admin._id)){%>
           <div class="row">
@@ -42,6 +42,10 @@
             </form>
           </div>
           <br />
+          <%}else{%>
+          <div class="col-3">
+            <button class="btn btn-outline-danger">Book</button>
+          </div>
           <%}%>
           <hr />
           <div class="d-flex align-items-center">
@@ -109,24 +113,9 @@
             </div>
           </div>
           <br />
-          <hr />
-          <!----------------------------------- google maps ----------------------------------->
-          <h3 class="lead">📍 We’re Here!</h3>
-          <br />
-
-          <iframe
-            width="100%"
-            height="450"
-            style="border: 0"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=<%=item.location%>+<%=item.country%>&output=embed"
-          ></iframe>
 
           <!----------------------------------- create review ----------------------------------->
-          <br />
-          <br />
+
           <hr />
           <%if(currUser){%>
           <h3>Leave a Review</h3>
@@ -237,6 +226,21 @@
           </div>
           <% } %>
         </div>
+        <!----------------------------------- google maps ----------------------------------->
+        <hr />
+        <br />
+        <h3 class="lead">📍 We’re Here!</h3>
+        <br />
+
+        <iframe
+          width="100%"
+          height="450"
+          style="border: 0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=<%=item.location%>+<%=item.country%>&output=embed"
+        ></iframe>
       </div>
     </div>
   </div>

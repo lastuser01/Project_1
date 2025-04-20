@@ -79,6 +79,7 @@ app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
     res.locals.currUser=req.user;
+    res.locals.canCreate="new ObjectId('6804c566d17d3b9ff0375aed')"
     next();
 })
 
