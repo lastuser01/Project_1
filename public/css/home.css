@@ -49,7 +49,9 @@ body {
 }
 
 .card-img-top {
-    border-radius: 22px 22px 0 0 !important
+    object-fit: cover;
+    border-radius: 22px 22px 0 0 !important;
+    height: 20rem;
 }
 
 .card-title {
