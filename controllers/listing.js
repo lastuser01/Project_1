@@ -54,7 +54,7 @@ module.exports.createListing=async (req,res)=>{
     newlisting.image={url,filename}
     await newlisting.save().catch(err=>console.log(err))
     req.flash("success","New listing created !!")
-    res.redirect("http://localhost:3000/listings")
+    res.redirect("/listings")
 }
 
 
@@ -79,7 +79,7 @@ module.exports.updateListing=async (req,res)=>{
         await listing.save()
     }
     req.flash("success","Listing updated!!")
-    res.redirect("http://localhost:3000/listings")
+    res.redirect("/listings")
 }
 
 
@@ -87,5 +87,5 @@ module.exports.deleteListing=async (req,res)=>{
     let {id}=req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("error","Listing deleted !!")
-    res.redirect("http://localhost:3000/listings")
+    res.redirect("/listings")
 }
