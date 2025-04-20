@@ -1,7 +1,6 @@
 if(process.env.NODE_ENV!="Production"){
     require("dotenv").config()
 }
-console.log(process.env.ATLASDB_URL)
 
 
 const express=require("express");
@@ -35,6 +34,7 @@ async function main(){
 
 app.use(methodOverride("_method"))
 app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");

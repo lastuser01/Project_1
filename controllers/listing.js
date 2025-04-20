@@ -85,6 +85,25 @@ module.exports.updateListing=async (req,res)=>{
 }
 
 
+module.exports.applyFilter=async (req,res)=>{
+        let {categories}=req.body;
+         
+        if(!categories || !categories.length){
+            return res.status(400).json({ 
+                success: false,
+                error: "Categories must be provided as an array"
+              });
+        }
+
+        const filteredListings = await Listing.find({ category: { $in: categories } });
+
+        res.json({
+            success: true,
+            items: filteredListings
+        })
+      
+}
+
 module.exports.deleteListing=async (req,res)=>{
     let {id}=req.params;
     let listing=await Listing.findById(id)

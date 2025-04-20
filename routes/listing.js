@@ -19,6 +19,8 @@ router.get("/search",WrapAsync(ListingController.renderSearchForm))
 
 router.get("/:id/update",isLoggedIn,WrapAsync(ListingController.renderUpdateForm)) 
 
+router.post("/filter",WrapAsync(ListingController.applyFilter))
+
 router.route("/:id")
     .get(WrapAsync(ListingController.renderIndivisualListing))
     .patch(isLoggedIn,isAdmin,upload.single('listing[image]'),WrapAsync(ListingController.updateListing)) 

@@ -1,77 +1,48 @@
 <% layout('/layouts/boilerplate')-%>
-<style>
-  #filters {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
 
-  .filter {
-    text-align: center;
-    opacity: 0.6;
-  }
-
-  .filter:hover {
-    opacity: 1;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.832);
-  }
-  .tax {
-    display: none;
-  }
-
-  .tax-toggle {
-    border: 1.5px solid gray;
-    width: auto;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    height: 50px;
-  }
-</style>
 <body>
   <div id="filters" class="row">
-    <div class="filter col">
+    <div class="filter col" category="Trending">
       <span class="material-symbols-outlined"> local_fire_department </span>
       <p>Trending</p>
     </div>
-    <div class="filter col filter-collapse">
+    <div class="filter col filter-collapse" category="Beachfront">
       <span class="material-symbols-outlined"> beach_access </span>
       <p>Beachfront</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Cabin">
       <span class="material-symbols-outlined"> cottage </span>
       <p>Cabin</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Rooms">
       <span class="material-symbols-outlined"> hotel </span>
       <p>Rooms</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Arctic">
       <span class="material-symbols-outlined"> mode_cool </span>
       <p>Arctic</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Mountains">
       <span class="material-symbols-outlined"> landscape </span>
       <p>Mountains</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Castle">
       <span class="material-symbols-outlined"> castle </span>
       <p>Castle</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Pools">
       <div><span class="material-symbols-outlined"> pool </span></div>
       <p>Pools</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="Camping">
       <span class="material-symbols-outlined"> camping </span>
       <p>Camping</p>
     </div>
-    <div class="filter col">
+    <div class="filter col" category="boats">
       <span class="material-symbols-outlined"> directions_boat </span>
       <p>boats</p>
     </div>
-    <div class="col tax-toggle">
+    <div class="col-2 tax-toggle">
       <div class="form-check form-switch form-check-reverse">
         <label class="form-check-label text-center" for="switchCheckReverse"
           >Display taxes</label
@@ -85,8 +56,13 @@
     </div>
   </div>
   <div class="container">
-    <div class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3">
-      <%for(item of items){%>
+    <br />
+    <div class="loading-spinner" style="display: none">
+      <div class="spinner"></div>
+      <p>Loading listings...</p>
+    </div>
+    <div class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3 innercontainer">
+      <% for(item of items){%>
       <a href="/listings/<%=item.id%>" class="cards">
         <div class="col card all" style="width: 21rem">
           <img
@@ -115,23 +91,4 @@
       <%}%>
     </div>
   </div>
-  <script>
-    let taxswitch = document.getElementById("switchCheckReverse");
-    let show = false;
-    taxswitch.addEventListener("click", () => {
-      if (show == false) {
-        let taxes = document.querySelectorAll(".tax");
-        for (tax of taxes) {
-          tax.style.display = "block";
-        }
-        show = true;
-      } else {
-        let taxes = document.querySelectorAll(".tax");
-        for (tax of taxes) {
-          tax.style.display = "none";
-        }
-        show = false;
-      }
-    });
-  </script>
 </body>
