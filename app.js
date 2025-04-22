@@ -104,16 +104,3 @@ app.listen(port,()=>{
     console.log("server started on port 3000")
 })
 
-process.on('SIGTERM', () => {
-    console.log('SIGTERM received - shutting down');
-    server.close(() => {
-      console.log('Server closed');
-      process.exit(0);
-    });
-  });
-  
-  process.on('SIGINT', () => {
-    server.close(() => {
-      process.exit(0);
-    });
-  });
