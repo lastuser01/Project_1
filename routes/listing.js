@@ -17,6 +17,8 @@ router.get("/new",isLoggedIn,ListingController.rendernewForm)
 
 router.get("/search",WrapAsync(ListingController.renderSearchForm))
 
+router.get("/Booking",WrapAsync(ListingController.renderBookingForm))
+
 router.get("/:id/update",isLoggedIn,WrapAsync(ListingController.renderUpdateForm)) 
 
 router.post("/filter",WrapAsync(ListingController.applyFilter))

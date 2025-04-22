@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br />
+      <h1>Booking</h1>
+      <br />
+      <form action="/listings" method="post" enctype="multipart/form-data">
+        <div class="row mb-3">
+          <div class="col row">
+            <div class="col">
+              <label for="title" class="col-form-label">Title</label>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="listing[title]"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col">
+              <label for="title" class="col-form-label">Title</label>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="listing[title]"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <label for="email" class="col-form-label">Email</label>
+            <div class="col">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="User[email]"
+                placeholder="myname@example.com"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="roomtype" class="col-form-label">Room Type</label>
+            <div>
+              <select name="roomtype" id="roomtype" class="form-control">
+                <option value="">Standard Room (1 to 2 People)</option>
+                <option value="">Family Room (1 to 4 People)</option>
+                <option value="">Private Room (1 to 3 People)</option>
+                <option value="">Mix Dorm Room (6 People)</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <label for="guests" class="col-form-label">No of Guests</label>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                id="guests"
+                name="guests"
+                placeholder="e.g-2,3"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <button class="btn btn-outline-secondary btn-lg">Book</button>
+      </form>
+    </div>
+  </div>
+</body>

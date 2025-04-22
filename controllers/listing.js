@@ -68,6 +68,10 @@ module.exports.renderUpdateForm=async (req,res)=>{
    res.render("./listing/update.ejs",{post,originalImage})
 }
 
+module.exports.renderBookingForm=(req,res)=>{
+    res.render("./listing/BookingForm.ejs",{})
+}
+
 
 module.exports.updateListing=async (req,res)=>{
     let {id}=req.params;
