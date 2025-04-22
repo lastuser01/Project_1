@@ -72,11 +72,16 @@ iframe {
 
 #filters {
     display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    overflow: scroll;
+    flex-wrap: nowrap;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .filter {
     padding-top: 1rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
     text-align: center;
     opacity: 0.6;
 }
@@ -85,6 +90,10 @@ iframe {
     opacity: 1;
     cursor: pointer;
     border-bottom: 3px solid rgba(128, 128, 128, 0.832);
+}
+
+#filters::-webkit-scrollbar {
+    display: none !important;
 }
 
 .selected {
@@ -117,7 +126,10 @@ iframe {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 8px;
+    align-items: center;
+    justify-content: space-evenly;
     z-index: 1000;
+
 }
 
 .spinner {
@@ -127,8 +139,14 @@ iframe {
     border-radius: 50%;
     border-left-color: #09f;
     animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
+    margin-right: 10px;
 }
+
+.review {
+    width: auto;
+}
+
+
 
 @keyframes spin {
     0% {
@@ -138,4 +156,44 @@ iframe {
     100% {
         transform: rotate(360deg);
     }
+}
+
+@media (max-width:992px) {}
+
+@media (max-width:443px) {
+    .innercontainer .cards .card {
+        width: 19rem !important;
+    }
+
+    .innercontainer .cards .card .card-img-top {
+        width: 19rem !important;
+    }
+
+    .filter {
+        padding-right: 1rem;
+        padding-left: 1rem;
+
+    }
+
+    .tax-toggle {
+        width: auto;
+    }
+
+    .indi-image {
+        width: 300px !important;
+    }
+
+    .left-offering {
+        width: 50%;
+    }
+
+    .right-offering {
+        width: 50%;
+    }
+
+    iframe {
+        height: auto;
+        aspect-ratio: 1;
+    }
+
 }
