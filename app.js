@@ -91,7 +91,7 @@ app.use("/listings/:id/reviews",reviewRouter)
 app.use("/listings",listingRouter);
 app.use("/user",userRouter);
 
-app.all("*",(req,res,next)=>{
+app.get("*",(req,res,next)=>{
     next(new ExpressError(500,"no such route found !"))
 })
 
