@@ -1,3 +1,43 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".theme-toggle");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // Initialize theme
+  function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      setTheme(prefersDark.matches ? "dark" : "light");
+    }
+  }
+
+  // Set theme
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }
+
+  // Toggle theme
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  }
+
+  // System theme change listener
+  prefersDark.addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      setTheme(e.matches ? "dark" : "light");
+    }
+  });
+
+  // Button click listener
+  toggle.addEventListener("click", toggleTheme);
+
+  // Initialize
+  initTheme();
+});
+
 let taxswitch = document.getElementById("switchCheckReverse");
 let show = false;
 taxswitch.addEventListener("click", () => {

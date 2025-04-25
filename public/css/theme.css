@@ -1,0 +1,150 @@
+/* :root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #007bff;
+    --transition-speed: 0.4s;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --accent-color: #1e90ff;
+    --text-sec-color: #4d4d4d;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+
+
+input,
+input::placeholder,
+textarea {
+    background-color: var(--bg-color) !important;
+    color: var(--text-sec-color) !important;
+}
+
+*/
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --transition-speed: 0.4s;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --input-bg: #2d2d2d;
+    --input-border: #444444;
+    --input-text: #f0f0f0;
+    --input-pholder: #bbbbbb;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+    font-family: system-ui, sans-serif;
+}
+
+
+.theme-toggle {
+    --size: 3rem;
+    --icon-color: var(--text-color);
+    --icon-color-hover: #646cff;
+
+    background: none;
+    border: none;
+    padding: auto;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--icon-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: all var(--transition-speed) ease;
+}
+
+.theme-toggle:hover svg {
+    stroke: var(--icon-color-hover);
+}
+
+.theme-toggle .sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .moon {
+    opacity: 0;
+    transform: rotate(-45deg);
+}
+
+[data-theme="dark"] .theme-toggle .sun {
+    opacity: 0;
+    transform: rotate(45deg);
+}
+
+[data-theme="dark"] .theme-toggle .moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-speed: 0.001s;
+    }
+}
+
+.card {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+}
+
+input,
+textarea,
+select {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    transition: all var(--transition-speed) ease;
+}
+
+select::-webkit-scrollbar {
+    display: none !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--input-border);
+}

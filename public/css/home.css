@@ -1,9 +1,9 @@
 /* Hero Section */
 body {
-    background: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdGVsfGVufDB8fDB8fHww');
+    background: url('https://images.unsplash.com/photo-1707380657539-5932658a8447?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://img.freepik.com/free-photo/dark-surface-with-reflections-smooth-minimal-black-waves-background-blurry-silk-waves-minimal-soft-grayscale-ripples-flow_1217-1723.jpg?t=st=1745602507~exp=1745606107~hmac=cb31fec28f52f7d8d7ecba204c7730aa6264d4d7151c116c76ab34745fdc2982&w=1380');
     /* background-color: lightsteelblue; */
     background-size: cover;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
     background-attachment: fixed;
     scroll-behavior: smooth;
 }
@@ -15,7 +15,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .hero::before {
@@ -44,6 +43,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 22px;
+    background-color: #4a4a4a30;
 }
 
 .card:hover {
