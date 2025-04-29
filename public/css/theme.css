@@ -128,9 +128,9 @@ body {
 input,
 textarea,
 select {
-    background-color: var(--input-bg);
-    color: var(--input-text);
-    transition: all var(--transition-speed) ease;
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    transition: all var(--transition-speed) ease !important;
 }
 
 select::-webkit-scrollbar {
@@ -146,5 +146,5 @@ select:focus {
 
 input::placeholder,
 textarea::placeholder {
-    color: var(--input-border);
+    color: var(--input-border) !important;
 }

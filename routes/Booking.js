@@ -9,9 +9,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  let id = req.user._id;
-  let userbookings = await Booking.find({ user: id }).populate("listing");
-  console.log(userbookings);
+  let userbookings;
+  if (req.user) {
+    let id = req.user._id;
+    userbookings = await Booking.find({ user: id }).populate("listing");
+    console.log(userbookings);
+  } else {
+    userbookings = [];
+  }
   res.render("./listing/Booking.ejs", { bookings: userbookings });
 });
 
