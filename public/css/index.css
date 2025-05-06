@@ -9,12 +9,17 @@ body {
 }
 
 .navbar {
-    background-color: rgba(9, 9, 9, 0.474);
-    backdrop-filter: blur(30px) !important
+    background-color: rgba(9, 9, 9, 0.059);
+    backdrop-filter: blur(35px) !important;
+    color: var(--text-color);
+}
+
+.nav-link {
+    color: var(--text-color);
 }
 
 .nav-link:hover {
-    color: white;
+    color: aquamarine;
 }
 
 
@@ -100,6 +105,12 @@ iframe {
     opacity: 1;
     cursor: pointer;
     border-bottom: 3px solid rgba(128, 128, 128, 0.832);
+}
+
+.filter:focus {
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 #filters::-webkit-scrollbar {

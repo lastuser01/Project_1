@@ -1,4 +1,4 @@
-<%layout("/layouts/boilerplate")-%>
+<% layout("/layouts/boilerplate") -%>
 <head>
   <link rel="stylesheet" href="/static/css/booking.css" />
 </head>
@@ -8,20 +8,19 @@
       <div class="row align-items-center">
         <div class="col-md-8">
           <h1 class="display-4">My Hotel Bookings</h1>
-          <p class="lead">
-            View and manage all your upcoming and past hotel reservations
-          </p>
         </div>
       </div>
     </div>
   </div>
+
   <div class="container mb-5">
-    <div class="col">
-      <!------------------------------------------ Booking Card ------------------------------------------------>
-      <% if(!bookings.length){%>
+    <div class="row text-light">
+      <h3 class="fw-lighter lead mt-4">Rooms & Price Summary</h3>
+
+      <% if (!bookings || bookings.length === 0) { %>
       <div class="col-12">
         <div class="card no-bookings">
-          <div class="card-body">
+          <div class="card-body text-center">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png"
               width="120"
@@ -38,75 +37,156 @@
           </div>
         </div>
       </div>
-      <%} else{ for(booking of bookings){%>
-      <div class="row-lg-6 mb-4">
-        <div class="card booking-card h-100">
-          <div class="position-relative">
-            <!-- <img
-              src="<%=booking.listing.image.url%>"
-              class="card-img-top hotel-image"
-              alt="Luxury Hotel"
-              height="300"
-            /> -->
-            <span class="badge bg-success status-badge">Confirmed</span>
-          </div>
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h5 class="card-title mb-0"><%=booking.listing.title%></h5>
-            </div>
-            <p class="mb-3">
-              <%=booking.listing.location%>, <%=booking.listing.country%>
-            </p>
-            <div class="row mb-3">
-              <div class="col-6">
-                <small>Check-in</small>
-                <p class="mb-0 fw-bold">
-                  <%let checkin =
-                  booking.arrival_date.toISOString().slice(0,10)%><%=checkin%>
-                </p>
-              </div>
-              <div class="col-6">
-                <small>Check-out</small>
-                <p class="mb-0 fw-bold">
-                  <%let checkout =
-                  booking.dept_year.toString()+"-"+booking.dept_month.toString()+"-"+booking.dept_day.toString()%><%=checkout%>
-                </p>
-              </div>
-            </div>
+      <% } else { %>
 
-            <div
-              class="d-flex justify-content-between align-items-center mb-3 row"
+      <!-- Booking Column -->
+      <div class="col-lg-8">
+        <div class="card p-3">
+          <% for (let i = 0; i < bookings.length; i++) { let booking =
+          bookings[i]; let checkin = new
+          Date(booking.arrival_date).toLocaleDateString(); let checkout
+          =`${booking.dept_year}-${String(booking.dept_month).padStart(2,'0')}-${String(booking.dept_day).padStart(2,
+          '0')}`; %>
+          <div class="p-2 position-relative">
+            <form
+              action="/booking/<%=booking.id%>?_method=delete"
+              method="post"
+              class="position-absolute end-0 top-0 m-2"
             >
-              <div class="col-6">
-                <small>Room Type</small>
-                <p class="mb-0 fw-bold"><%=booking.type%></p>
+              <button class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash3-fill"></i>&nbsp;remove
+              </button>
+            </form>
+
+            <div class="d-flex flex-wrap align-items-start">
+              <div class="col-lg-4">
+                <img
+                  src="<%=booking.listing.image.url%>"
+                  alt="Room Image"
+                  class="img-fluid my-lg-3 pe-lg-3"
+                />
               </div>
-              <div class="col-6">
-                <small>Total Price</small>
-                <p class="mb-0 fw-bold"><%=booking.listing.price%></p>
+              <div class="col-lg-8 col-md-12 col-sm-12">
+                <h5><%= booking.listing.title %></h5>
+                <h6><%= booking.type %></h6>
+                <p class="mb-1">
+                  <%= booking.listing.location %>, <%= booking.listing.country
+                  %>
+                </p>
+                <ul class="amenities-list mb-2 text-success">
+                  <li>Free WiFi</li>
+                  <li>Breakfast</li>
+                  <li>Pool</li>
+                  <li>Spa</li>
+                </ul>
+                <div class="row">
+                  <div class="col-md-4">
+                    <strong>Check In:</strong><br /><%= checkin %>
+                  </div>
+                  <div class="col-md-4">
+                    <strong>Check Out:</strong><br /><%= checkout %>
+                  </div>
+                  <div class="col-md-4">
+                    <strong>Occupancy:</strong><br /><%= booking.guests %>
+                    guests
+                  </div>
+                </div>
               </div>
             </div>
-            <ul class="amenities-list mb-3">
-              <li>Free WiFi</li>
-              <li>Breakfast</li>
-              <li>Pool</li>
-              <li>Spa</li>
-            </ul>
 
-            <div class="d-flex row">
-              <div class="col-7"></div>
-              <button class="btn btn-outline-secondary btn-sm col-2">
-                View Details
-              </button>
-              <div class="col-1"></div>
-              <button class="btn btn-outline-danger btn-sm col-2">
-                Cancel Booking
-              </button>
+            <div class="mt-3 d-flex justify-content-between flex-wrap">
+              <div>
+                <h5>₹ <%= booking.listing.price %></h5>
+                <p class="mb-0">Total rooms price</p>
+              </div>
+              <div class="d-flex align-items-center fs-4">+</div>
+              <div>
+                <h5>₹ 0.00</h5>
+                <p class="mb-0 text-secondary">Extra Services</p>
+              </div>
+              <div>
+                <h5>₹ 2,531.25</h5>
+                <p class="mb-0">Total (Incl. Taxes)</p>
+              </div>
+            </div>
+          </div>
+
+          <% if (i < bookings.length - 1) { %>
+          <hr />
+          <% } } %>
+
+          <!-- payment -->
+          <div class="accordion my-4" id="accordionExample">
+            <div class="accordion-item rounded">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button collapsed rounded"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#guestInfo"
+                >
+                  Guest Information
+                </button>
+              </h2>
+              <div id="guestInfo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <p>Guest form section...</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item rounded mt-3">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed rounded"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#paymentInfo"
+                >
+                  Payment Information
+                </button>
+              </h2>
+              <div id="paymentInfo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <p>Payment form section...</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <%}%> <%}%>
+
+      <!-- Right Column (Summary) -->
+      <div class="col-lg-4 ps-lg-5 mt-4">
+        <div class="card p-4">
+          <h6>Total rooms cost (tax incl)</h6>
+          <p>₹ 2,531.25</p>
+          <h6>Convenience Fees (tax incl)</h6>
+          <p>₹ 281.25</p>
+          <h6>Total tax</h6>
+          <p>₹ 312.50</p>
+          <hr />
+          <h5>Total</h5>
+          <p class="h4 text-primary">₹ 2,812.50</p>
+        </div>
+
+        <div class="summary-box card p-4 mt-3">
+          <h6 class="mb-3">Apply Coupon</h6>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter coupon code"
+              aria-label="Coupon code"
+              aria-describedby="button-addon2"
+            />
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+      <% } %>
     </div>
   </div>
 </body>

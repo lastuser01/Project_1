@@ -8,34 +8,6 @@ body {
     scroll-behavior: smooth;
 }
 
-.booking-card {
-    background-color: #18171791;
-    transition: transform 0.3s ease;
-    border-radius: 10px;
-    overflow: hidden;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-.booking-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.status-badge {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    font-size: 0.8rem;
-}
-
-.header-section {
-    color: white;
-    padding: 3rem 0;
-    margin-bottom: 2rem;
-}
-
 .amenities-list {
     list-style-type: none;
     padding: 0;
@@ -45,7 +17,8 @@ body {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 5px;
-    background-color: #1d1e1f !important;
+    background-color: var(--input-border);
+    background-color: rgba(11, 71, 11, 0.353);
     padding: 3px 8px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -54,4 +27,13 @@ body {
 .no-bookings {
     text-align: center;
     padding: 5rem 0;
+}
+
+input {
+    background: transparent !important;
+    color: white;
+}
+
+input::placeholder {
+    color: white !important;
 }

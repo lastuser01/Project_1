@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const WrapAsync = require("../public/js/WrapAsync");
-const { isLoggedIn } = require("../middlewares/isloggedin.js");
-const { isAdmin } = require("../middlewares/isloggedin.js");
+const { isLoggedIn, saveRedirectUrl } = require("../middlewares/isloggedin.js");
+const { isOwner } = require("../middlewares/isloggedin.js");
 const ListingController = require("../controllers/listing.js");
 const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
@@ -31,13 +31,13 @@ router.post("/filter", WrapAsync(ListingController.applyFilter));
 
 router
   .route("/:id")
-  .get(WrapAsync(ListingController.renderIndivisualListing))
+  .get(saveRedirectUrl, WrapAsync(ListingController.renderIndivisualListing))
   .patch(
     isLoggedIn,
-    isAdmin,
+    isOwner,
     upload.single("listing[image]"),
     WrapAsync(ListingController.updateListing)
   )
-  .delete(isLoggedIn, isAdmin, WrapAsync(ListingController.deleteListing));
+  .delete(isLoggedIn, isOwner, WrapAsync(ListingController.deleteListing));
 
 module.exports = router;

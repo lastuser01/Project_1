@@ -32,26 +32,12 @@ let booking_schema = new Schema({
     type: String,
     required: true,
   },
-  dept_day: {
-    type: Number,
-    required: true,
-  },
-  dept_month: {
-    type: Number,
-    required: true,
-  },
-  dept_year: {
-    type: Number,
-    required: true,
+  dept_date: {
+    type: Date,
   },
   listing: {
     type: Schema.Types.ObjectId,
     ref: "Listing",
-  },
-
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
   },
 });
 

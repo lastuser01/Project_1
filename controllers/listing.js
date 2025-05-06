@@ -26,15 +26,20 @@ module.exports.renderSearchForm = async (req, res) => {
 
 module.exports.renderIndivisualListing = async (req, res, next) => {
   let { id } = req.params;
-  let item = await Listing.findById(id)
-    .populate({ path: "reviews", populate: { path: "author" } })
-    .populate("admin");
-  if (!item) {
-    req.flash("error", "listing you requested for does not exist !!");
-    return res.redirect("/listings");
+  if (id) {
+    let item = await Listing.findById(id)
+      .populate({ path: "reviews", populate: { path: "author" } })
+      .populate("admin");
+    if (!item) {
+      req.flash("error", "listing you requested for does not exist !!");
+      return res.redirect("/listings");
+    } else {
+      let length = item.reviews.length;
+      res.render("./listing/indivisual.ejs", { item, length });
+    }
   } else {
-    let length = item.reviews.length;
-    res.render("./listing/indivisual.ejs", { item, length });
+    req.flash("error", "listing does not exits!!");
+    res.redirect(res.locals.redirect);
   }
 };
 

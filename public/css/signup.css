@@ -110,6 +110,10 @@ hr {
     border-radius: 40px;
 }
 
+.input {
+    background-color: transparent !important;
+}
+
 @media (max-width: 768px) {
     .left-panel {
         display: none;

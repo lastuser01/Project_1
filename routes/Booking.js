@@ -2,6 +2,7 @@ const express = require("express");
 const WrapAsync = require("../public/js/WrapAsync");
 const router = express.Router({ mergeParams: true });
 let Booking = require("../models/Booking.js");
+const User = require("../models/user.js");
 
 router.get("/:id", (req, res) => {
   let listing_id = req.params.id;
@@ -11,9 +12,11 @@ router.get("/:id", (req, res) => {
 router.get("/", async (req, res) => {
   let userbookings;
   if (req.user) {
-    let id = req.user._id;
-    userbookings = await Booking.find({ user: id }).populate("listing");
-    console.log(userbookings);
+    let user1 = await User.findById(req.user._id).populate({
+      path: "bookings",
+      populate: { path: "listing" },
+    });
+    userbookings = user1.bookings;
   } else {
     userbookings = [];
   }
@@ -24,16 +27,33 @@ router.post(
   "/:id",
   WrapAsync(async (req, res) => {
     let listingid = req.params.id;
-    // console.log(listingid);
     let booking = req.body.Booking;
 
     let booking1 = new Booking(booking);
     booking1.listing = listingid;
-    booking1.user = req.user._id;
+
+    let uid = req.user.id;
+
+    let user1 = await User.findById(uid);
+    console.log(user1);
+
+    user1.bookings.push(booking1.id);
 
     await booking1.save();
-    console.log(booking1);
-    res.render("./listing/Booking.ejs");
+    await user1.save();
+    console.log(booking1, user1);
+    req.flash("booking added in cart");
+    res.redirect("/booking");
+  })
+);
+
+router.delete(
+  "/:id",
+  WrapAsync(async (req, res) => {
+    let bookingid = req.params.id;
+    let user1 = await Booking.findByIdAndDelete(bookingid);
+
+    res.redirect("/booking");
   })
 );
 

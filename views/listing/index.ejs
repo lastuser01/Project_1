@@ -78,7 +78,11 @@
               <b class="fw-medium"> <%=item.title%></b>
 
               <br />
-              &#8377; <%= item.price %> / night &nbsp;<i class="tax">+18%GST</i>
+              &#8377; <%= item.price %> / night &nbsp;<i
+                class="tax text-danger-emphasis"
+                >+<%= item.price > 8000 ? item.price*.18 : item.price >
+                1000?item.price*.12:0 %> &nbsp;GST</i
+              >
             </div>
           </div>
         </div>

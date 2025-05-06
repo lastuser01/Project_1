@@ -59,29 +59,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#footer">contact us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              more
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <a class="dropdown-item" href="/listings/new">Add new</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/booking">My Bookings</a>
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </li>
         </ul>
         <form
           class="d-flex nav-search col-md-6"
@@ -96,21 +73,55 @@
             aria-label="Search"
             name="value"
           />
-          <button class="nav-search-btn">Search</button>
+          <button
+            class="nav-search-btn .d-none .d-sm-block .d-md-none d-lg-none"
+          >
+            Search
+          </button>
         </form>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <% if(!currUser){%>
-          <li class="nav-item">
-            <a href="/user/signup" class="nav-link">Signup</a>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle fs-5"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              ><i class="bi bi-person-fill fs-4"></i>
+              <%=currUser?.username%>
+            </a>
+            <ul class="dropdown-menu px-4" aria-labelledby="navbarDropdown">
+              <% if(currUser){%>
+              <li>
+                <a class="dropdown-item" href="/booking">Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/booking">My Bookings</a>
+              </li>
+              <%if(currUser && currUser.equals(adminid)){%>
+              <li>
+                <a class="dropdown-item" href="/new">Create New Listing</a>
+              </li>
+              <%}%>
+              <li>
+                <a class="dropdown-item" href="#footer">Help Center</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/user/logout">Log Out</a>
+              </li>
+
+              <%} else{%>
+              <li>
+                <a class="dropdown-item" href="/user/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a href="/user/signup" class="dropdown-item">Signup</a>
+              </li>
+
+              <%}%>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="/user/login" class="nav-link ms-1">Login</a>
-          </li>
-          <%} else{%>
-          <li class="nav-item fw-medium">
-            <a href="/user/logout" class="nav-link ms-1">Logout</a>
-          </li>
-          <%}%>
         </ul>
         <button class="theme-toggle mt-3" aria-label="Toggle theme">
           <svg class="sun" viewBox="0 0 34 34">
