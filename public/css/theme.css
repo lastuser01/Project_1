@@ -37,6 +37,8 @@ textarea {
     --bg-color: #ffffff;
     --text-color: #333333;
     --transition-speed: 0.4s;
+    --bg-transparent: rgba(255, 255, 255, 0.668);
+    --input-bg: transparent;
 }
 
 [data-theme="dark"] {
@@ -46,6 +48,7 @@ textarea {
     --input-border: #444444;
     --input-text: #f0f0f0;
     --input-pholder: #bbbbbb;
+    --bg-transparent: #1111117d;
 }
 
 body {
@@ -61,56 +64,24 @@ body {
     --size: 3rem;
     --icon-color: var(--text-color);
     --icon-color-hover: #646cff;
-
-    background: none;
-    border: none;
-    padding: auto;
-    width: var(--size);
-    height: var(--size);
     cursor: pointer;
-    position: relative;
     transition: transform 0.2s ease;
 }
 
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
-.theme-toggle svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke: var(--icon-color);
-    stroke-width: 2;
-    stroke-linecap: round;
-    transition: all var(--transition-speed) ease;
-}
-
-.theme-toggle:hover svg {
-    stroke: var(--icon-color-hover);
-}
-
 .theme-toggle .sun {
-    opacity: 1;
-    transform: rotate(0deg);
+    display: block;
 }
 
 .theme-toggle .moon {
-    opacity: 0;
-    transform: rotate(-45deg);
+    display: none;
 }
 
 [data-theme="dark"] .theme-toggle .sun {
-    opacity: 0;
-    transform: rotate(45deg);
+    display: none;
 }
 
 [data-theme="dark"] .theme-toggle .moon {
-    opacity: 1;
-    transform: rotate(0deg);
+    display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -89,6 +89,9 @@ app.get("/", (req, res) => {
   res.render("./listing/home.ejs");
 });
 
+app.get("/aboutus", (req, res) => {
+  res.render("./listing/aboutus.ejs");
+});
 app.use("/booking", BookingRouter);
 app.use("/listings", listingRouter);
 app.use("/user", userRouter);

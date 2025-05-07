@@ -3,6 +3,7 @@ const WrapAsync = require("../public/js/WrapAsync");
 const router = express.Router({ mergeParams: true });
 let Booking = require("../models/Booking.js");
 const User = require("../models/user.js");
+const Listing = require("../models/Listings.js");
 
 router.get("/:id", (req, res) => {
   let listing_id = req.params.id;
@@ -33,6 +34,7 @@ router.post(
     booking1.listing = listingid;
 
     let uid = req.user.id;
+    let { price } = await Listing.findById(listingid);
 
     let user1 = await User.findById(uid);
     console.log(user1);
@@ -51,8 +53,9 @@ router.delete(
   "/:id",
   WrapAsync(async (req, res) => {
     let bookingid = req.params.id;
+    let { price } = await Listing.findById(bookingid.listing);
     let user1 = await Booking.findByIdAndDelete(bookingid);
-
+    console.log(price);
     res.redirect("/booking");
   })
 );

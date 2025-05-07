@@ -17,6 +17,7 @@
     <div class="row text-light">
       <h3 class="fw-lighter lead mt-4">Rooms & Price Summary</h3>
 
+      <!---------------------------------------------if no bookings  ------------------------------------------------------------------------->
       <% if (!bookings || bookings.length === 0) { %>
       <div class="col-12">
         <div class="card no-bookings">
@@ -39,7 +40,7 @@
       </div>
       <% } else { %>
 
-      <!-- Booking Column -->
+      <!---------------------------------------------------------- Booking Column ---------------------------------------------->
       <div class="col-lg-8">
         <div class="card p-3">
           <% for (let i = 0; i < bookings.length; i++) { let booking =
@@ -105,7 +106,7 @@
                 <p class="mb-0 text-secondary">Extra Services</p>
               </div>
               <div>
-                <h5>₹ 2,531.25</h5>
+                <h5>₹</h5>
                 <p class="mb-0">Total (Incl. Taxes)</p>
               </div>
             </div>

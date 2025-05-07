@@ -51,7 +51,12 @@
           <%}%>
           <hr />
           <div class="d-flex align-items-center">
-            <i class="bi bi-person-circle fs-3 text-secondary"></i>
+            <img
+              src="https://i.pravatar.cc/100"
+              class="rounded-circle"
+              alt="John Doe"
+              height="40"
+            />
             <h5 class="mb-0 text-secondary">
               &nbsp;&nbsp; Hosted by <%=item.admin.username%>
             </h5>
@@ -207,7 +212,14 @@
           <% for(review of item.reviews){ %>
           <div class="card col-3 border m-3 review">
             <div class="card-body">
-              <div class="card-title">@<%=review.author.username%></div>
+              <div class="card-title">
+                <img
+                  src="https://i.pravatar.cc/101"
+                  class="rounded-circle"
+                  alt="John Doe"
+                  height="30"
+                />&nbsp;&nbsp;@<%=review.author.username%>
+              </div>
 
               <p
                 class="starability-result"

@@ -54,14 +54,11 @@
             <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/listings">All listings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#footer">contact us</a>
+            <a class="nav-link" href="/listings">Explore!</a>
           </li>
         </ul>
         <form
-          class="d-flex nav-search col-md-6"
+          class="d-flex nav-search col-md-4"
           role="search"
           method="get"
           action="/listings/search"
@@ -79,7 +76,7 @@
             Search
           </button>
         </form>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle fs-5"
@@ -91,22 +88,34 @@
               <%=currUser?.username%>
             </a>
             <ul class="dropdown-menu px-4" aria-labelledby="navbarDropdown">
-              <% if(currUser){%>
               <li>
                 <a class="dropdown-item" href="/booking">Profile</a>
               </li>
               <li>
                 <a class="dropdown-item" href="/booking">My Bookings</a>
               </li>
-              <%if(currUser && currUser.equals(adminid)){%>
+              <% if(currUser && currUser.equals(adminid)){%>
               <li>
                 <a class="dropdown-item" href="/new">Create New Listing</a>
               </li>
               <%}%>
               <li>
+                <button
+                  class="theme-toggle dropdown-item"
+                  aria-label="Toggle theme"
+                >
+                  <div class="sun">Dark mode</div>
+                  <div class="moon">Light mode</div>
+                </button>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/aboutus">About Us</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="#footer">Help Center</a>
               </li>
               <li><hr class="dropdown-divider" /></li>
+              <% if(currUser){%>
               <li>
                 <a class="dropdown-item" href="/user/logout">Log Out</a>
               </li>
@@ -123,17 +132,6 @@
             </ul>
           </li>
         </ul>
-        <button class="theme-toggle mt-3" aria-label="Toggle theme">
-          <svg class="sun" viewBox="0 0 34 34">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path
-              d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-            ></path>
-          </svg>
-          <svg class="moon" viewBox="0 0 34 34">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
       </div>
     </div>
   </nav>
