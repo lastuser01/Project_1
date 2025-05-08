@@ -6,8 +6,13 @@ const User = require("../models/user.js");
 const Listing = require("../models/Listings.js");
 
 router.get("/:id", (req, res) => {
-  let listing_id = req.params.id;
-  res.render("./listing/BookingForm.ejs", { id: listing_id });
+  if (req.user) {
+    let listing_id = req.params.id;
+    res.render("./listing/BookingForm.ejs", { id: listing_id });
+  } else {
+    req.flash("error", "login required!!!");
+    res.redirect("/login");
+  }
 });
 
 router.get("/", async (req, res) => {
