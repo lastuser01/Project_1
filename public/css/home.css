@@ -71,12 +71,13 @@ header {
 
 
 .alert {
-    background-color: rgba(0, 0, 0, 0.17) !important;
+    background-color: rgba(0, 0, 0, 0.46) !important;
     border-radius: 40px;
+    backdrop-filter: blur(2px);
 }
 
 .Featured {
-    color: white;
+    color: var(--text-color);
 }
 
 .container i {
@@ -102,6 +103,10 @@ header {
 
 .Carousel {
     color: var(--text-color);
+}
+
+.header-line {
+    border-color: var(--text-color) !important;
 }
 
 @media (max-width:992px) {

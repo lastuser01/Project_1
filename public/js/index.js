@@ -115,6 +115,7 @@ function updatelistings(data) {
         class="card-img-top mx-auto d-block"
         src="${listing.image.url}"
         alt="${listing.title}"
+        loading="lazy"
         style="
           width: 24rem;
           height: 40vh;

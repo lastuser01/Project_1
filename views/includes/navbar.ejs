@@ -1,9 +1,6 @@
-<body>
-  <nav
-    class="navbar navbar-expand-lg border-body sticky-top"
-    data-bs-theme="dark"
-  >
-    <div class="container-fluid">
+<nav class="navbar sticky-top">
+  <div class="container-fluid">
+    <div class="d-flex flex-row w-100">
       <a class="navbar-brand" href="/"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,28 +34,19 @@
           </g>
         </svg>
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Home</a>
+      <div class="collapse d-none d-lg-flex d-md-flex w-100">
+        <ul
+          class="navbar-nav me-auto mb-lg-0 d-flex flex-row align-items-center"
+        >
+          <li class="nav-item mx-3">
+            <a class="nav-link fw-bold" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/listings">Explore!</a>
+          <li class="nav-item mx-3">
+            <a class="nav-link fw-bold" href="/listings">Explore!</a>
           </li>
         </ul>
         <form
-          class="d-flex nav-search col-md-4"
+          class="d-flex nav-search align-items-center col-lg-4"
           role="search"
           method="get"
           action="/listings/search"
@@ -76,11 +64,13 @@
             Search
           </button>
         </form>
-
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <a href="/booking" class="fs-3 ms-auto me-4 navbar-brand">
+          <i class="bi bi-cart3 nav-link"></i>
+        </a>
+        <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle fs-5"
+              class="nav-link dropdown-toggle fs-5 mx-3"
               href="#"
               role="button"
               data-bs-toggle="dropdown"
@@ -131,9 +121,116 @@
           </li>
         </ul>
       </div>
-      <a href="/booking" class="fs-3 mx-2 navbar-brand">
-        <i class="bi bi-cart3"></i>
-      </a>
+
+      <!-------------------------------------------toggler----------------------------------------------------------->
+
+      <button
+        class="navbar-toggler d-block d-lg-none d-md-none ms-auto"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-  </nav>
-</body>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="40px"
+            height="40px"
+            viewBox="0,0,256,256"
+          >
+            <g
+              fill="#1eb7e5"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+              style="mix-blend-mode: normal"
+            >
+              <g transform="scale(5.33333,5.33333)">
+                <path
+                  d="M28.465,38.611c0.419,-1.105 0.664,-2.365 0.664,-3.714c0,-4.133 -2.211,-7.494 -4.929,-7.494c-2.741,0 -4.951,3.361 -4.951,7.494c0,1.326 0.221,2.586 0.641,3.669c-9.041,0.951 -15.407,4.731 -17.993,6.432c4.355,-6.278 8.909,-13.638 13.262,-22.105c1.083,-2.101 2.101,-4.178 3.05,-6.211c0.375,0.243 0.751,0.509 1.171,0.775c1.945,1.215 3.759,1.879 5.084,2.233c-0.973,-0.73 -2.033,-1.613 -3.116,-2.697c-0.817,-0.817 -1.547,-1.637 -2.167,-2.433c1.835,-4.022 3.427,-7.891 4.819,-11.56c2.32,6.144 5.217,12.842 8.841,19.893c2.343,4.531 4.731,8.754 7.117,12.644c-0.685,-0.375 -1.437,-0.73 -2.233,-1.039c-1.371,-0.53 -2.652,-0.862 -3.759,-1.06c1.503,0.751 3.25,1.747 5.084,3.073c1.194,0.885 2.254,1.769 3.161,2.631c0.021,0.021 0.021,0.021 0.045,0.045c1.26,2.056 2.565,3.957 3.846,5.813c-2.541,-1.681 -8.796,-5.395 -17.637,-6.389z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" href="/booking">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings">Explore!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/booking">View Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">Help Center</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutus">About Us</a>
+          </li>
+          <% if(currUser && currUser.equals(adminid)){%>
+          <li class="nav-item">
+            <a class="nav-link" href="/new">Create New Listing</a>
+          </li>
+          <%}%> <% if(currUser){%>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/logout">Log Out</a>
+          </li>
+          <%} else{%>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/user/signup" class="nav-link">Signup</a>
+          </li>
+          <%}%>
+        </ul>
+        <form
+          class="d-flex mt-3"
+          role="search"
+          action="/listings/search"
+          method="get"
+        >
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
