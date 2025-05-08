@@ -37,7 +37,7 @@ textarea {
     --bg-color: #ffffff;
     --text-color: #333333;
     --transition-speed: 0.4s;
-    --bg-transparent: rgba(255, 255, 255, 0.668);
+    --bg-transparent: #1111117d;
     --input-bg: transparent;
 }
 
@@ -48,7 +48,7 @@ textarea {
     --input-border: #444444;
     --input-text: #f0f0f0;
     --input-pholder: #bbbbbb;
-    --bg-transparent: #1111117d;
+    --bg-transparent: rgba(255, 255, 255, 0.668);
 }
 
 body {

@@ -6,20 +6,20 @@
 <body>
   <!-- Hero Section -->
   <header class="hero text-center d-flex">
-    <div class="container">
+    <div class="container d-flex align-items-center flex-column">
       <br />
       <p class="lead" style="font-size: x-large">
         Book the best hotels at exclusive prices
       </p>
       <h1 style="font-size: 5rem">Find Your Perfect Stay</h1>
-      <br />
+
+      <hr class="border border-4 w-75" />
       <i> ~Your journey to unforgettable stays <br />begins here. </i>
     </div>
   </header>
   <!--------------------------------------------------------amenities------------------------------------------------------------------>
-  <div class="text-center amenities">
-    <br />
-    <br />
+  <div class="text-center amenities my-5 pt-5">
+    <br /><br />
     <h2 class="mt-2">Amenities</h2>
     <div class="">
       Experience luxury at our hotel with top-notch amenities. Enjoy our fitness
@@ -89,21 +89,18 @@
         />
       </div>
     </div>
-    <br /><br /><br /><br /><br />
   </div>
 
   <!-------------------------------------------- Featured Hotels ------------------------------------------------->
   <br /><br />
   <section class="container my-5 text-center">
-    <h2 class="mb-4 Featured text-dark">Featured Hotels</h2>
+    <h2 class="mb-4 Featured">Featured Hotels</h2>
     <div class="">
       Experience luxury at our hotel with top-notch amenities. Enjoy our fitness
       center, rejuvenating spa, <br />serene outdoor pool, and exquisite dining.
     </div>
     <div class="underline"></div>
-    <div
-      class="row p-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 gx-5"
-    >
+    <div class="row p-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1">
       <div class="col">
         <div class="card">
           <img
@@ -187,15 +184,15 @@
 
   <!------------------------------------- Carousel --------------------------------------------------->
 
-  <section class="py-5 Carousel">
+  <section class="pt-5 Carousel">
     <div class="container text-center">
       <h2 class="mb-3">What Our Guests Say?</h2>
-      <p class="text-muted mb-4">
+      <p class="mb-4">
         <span> Here are some valuable feedbacks from our guests. </span>
       </p>
       <hr
         class="mx-auto mb-5"
-        style="width: 60px; height: 2px; background-color: #333"
+        style="width: 60px; height: 2px; background-color: var(--bg-color)"
       />
 
       <!------------------------------------- Carousel body--------------------------------------------------->
@@ -209,7 +206,7 @@
           <!-- Slide 1 -->
           <div class="carousel-item active">
             <div class="d-flex flex-column align-items-center">
-              <div class="text-muted mb-3">
+              <div class="mb-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -223,7 +220,7 @@
                   />
                 </svg>
               </div>
-              <p class="w-75 text-muted">
+              <p class="w-75">
                 My stay at Hotel Prime was absolutely rejuvenating. The
                 Executive Room was spacious, elegant, and offered breathtaking
                 lake views. The staff’s attention to detail and impeccable
@@ -235,14 +232,14 @@
                 alt="John Doe"
               />
               <h5 class="mt-3 mb-0">John Doe</h5>
-              <small class="text-muted">Jan Comics Joe</small>
+              <small class="">Jan Comics Joe</small>
             </div>
           </div>
 
           <!-- Slide 2 -->
           <div class="carousel-item">
             <div class="d-flex flex-column align-items-center">
-              <div class="display-1 text-muted mb-3">
+              <div class="mb-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -256,7 +253,7 @@
                   />
                 </svg>
               </div>
-              <p class="w-75 text-muted">
+              <p class="w-75">
                 Fantastic experience! The food was divine, and the hospitality
                 was beyond expectations. I’ll definitely return.
               </p>
@@ -266,7 +263,7 @@
                 alt="Jane Smith"
               />
               <h5 class="mt-3 mb-0">Jane Smith</h5>
-              <small class="text-muted">Traveler & Blogger</small>
+              <small class="">Traveler & Blogger</small>
             </div>
           </div>
         </div>
@@ -295,5 +292,4 @@
       </div>
     </div>
   </section>
-  <br /><br />
 </body>
