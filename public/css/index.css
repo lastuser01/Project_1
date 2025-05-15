@@ -10,7 +10,7 @@ body {
 
 .navbar {
     background: #6c757dc1 !important;
-    background: #7f8fa6c2 !important;
+    background: #888b908d !important;
     /* backdrop-filter: blur(10px); */
     color: var(--text-color);
 }
@@ -31,10 +31,6 @@ body {
     background-color: gray !important;
 }
 
-.offcanvas {
-    width: 280px;
-}
-
 .nav-link {
     color: var(--bg-color);
 }
@@ -52,6 +48,7 @@ body {
     background-color: var(--bg-transparent) !important;
     border: 1px solid gray;
     border-radius: 20px;
+    color: var(--bg-color) !important;
 }
 
 .nav-search-btn {
@@ -189,6 +186,11 @@ iframe {
     width: auto;
 }
 
+.offcanvas {
+    color: var(--text-color);
+    background-color: var(--bg-transparent);
+    width: 20rem !important;
+}
 
 @keyframes spin {
     0% {

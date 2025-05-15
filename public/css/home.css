@@ -1,12 +1,39 @@
 /* Hero Section */
 body {
     scroll-behavior: smooth;
-    background: url('https://images.unsplash.com/photo-1650928800498-034549200857?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    position: relative;
+    box-sizing: border-box;
+}
+
+.background {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: url('your-image-url.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    background-position: center;
     background-color: var(--bg-color);
+    animation: header_animation linear;
+    animation-timeline: view();
+    animation-range: exit;
+    transform-origin: start;
 }
+
+@keyframes header_animation {
+    25% {
+        opacity: 1;
+    }
+
+    65%,
+    100% {
+        opacity: 0;
+        transform: scale(2.2);
+    }
+}
+
 
 header {
     background: transparent;
@@ -14,6 +41,13 @@ header {
     width: 98vw;
     height: 90vh;
     /* backdrop-filter: blur(30px); */
+
+}
+
+header h1 {
+    text-shadow: 0px 0px 24px #777;
+    font-size: 20rem;
+    color: #f5f4f4 !important;
 
 }
 
@@ -78,6 +112,8 @@ header {
 
 .Featured {
     color: var(--text-color);
+    font-family: serif;
+    font-weight: bolder
 }
 
 .container i {
@@ -109,15 +145,41 @@ header {
     border-color: var(--text-color) !important;
 }
 
-@media (max-width:992px) {
-    .container p {
-        /* margin-top: 3rem; */
+.scroll_animation {
+    animation:
+        scroll_animation linear,
+        fade_out linear;
+    animation-timeline: view();
+    animation-range:
+        entry cover 40%,
+        exit cover 20%;
+}
+
+
+@keyframes fade_out {
+    from {
+        opacity: 100%;
     }
 
-    /* .container i {
-    display: none;
-} */
+    to {
+        opacity: 0%;
+        scale: 0.5;
+    }
 }
+
+@keyframes scroll_animation {
+    from {
+        opacity: 0%;
+        scale: 0.5;
+    }
+
+    to {
+        opacity: 100%;
+        scale: 1;
+    }
+}
+
+@media (max-width:992px) {}
 
 @media (max-width:668px) {
     .hero {
