@@ -102,17 +102,16 @@
               type="text"
               class="form-control"
               data-mask="hh:MM"
-              value="06.00"
+              value="10:00"
               inputmode="numeric"
               placeholder="HH:MM"
               name="Booking[arrival_time]"
-              required
+              disabled
             />
           </div>
           <div class="col-lg-2 col-6 my-2 m-lg-0">
-            <select name="Booking[ampm]" class="form-control">
-              <option value="AM">AM</option>
-              <option value="PM">PM</option>
+            <select name="Booking[ampm]" class="form-control" disabled>
+              <option value="AM" selected>AM</option>
             </select>
           </div>
         </div>
@@ -137,7 +136,7 @@
           </div>
           <div class="col-lg-2 col-6 my-2 m-lg-0">
             <select name="Booking[ampm]" class="form-control" disabled>
-              <option selected value="PM">PM</option>
+              <option selected value="AM">AM</option>
             </select>
           </div>
         </div>

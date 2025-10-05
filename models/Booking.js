@@ -24,14 +24,6 @@ let booking_schema = new Schema({
     type: Date,
     required: true,
   },
-  arrival_time: {
-    type: String,
-    required: true,
-  },
-  ampm: {
-    type: String,
-    required: true,
-  },
   dept_date: {
     type: Date,
   },

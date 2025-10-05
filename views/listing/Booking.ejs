@@ -46,9 +46,8 @@
         <div class="card p-3">
           <% for (let i = 0; i < bookings.length; i++) { let booking =
           bookings[i]; let checkin = new
-          Date(booking.arrival_date).toLocaleDateString(); let checkout
-          =`${booking.dept_year}-${String(booking.dept_month).padStart(2,'0')}-${String(booking.dept_day).padStart(2,
-          '0')}`; %>
+          Date(booking.arrival_date).toLocaleDateString(); let checkout= new
+          Date(booking.dept_date).toLocaleDateString(); %>
           <div class="p-2 position-relative">
             <form
               action="/booking/<%=booking.id%>?_method=delete"
@@ -108,7 +107,7 @@
                 <p class="mb-0 text-secondary">Extra Services</p>
               </div>
               <div>
-                <h5>₹</h5>
+                <h5>₹<%= booking.listing.price%></h5>
                 <p class="mb-0">Total (Incl. Taxes)</p>
               </div>
             </div>
@@ -162,15 +161,21 @@
       <!-- Right Column (Summary) -->
       <div class="col-lg-4 ps-lg-5 mt-4">
         <div class="card p-4">
+          <% let roomsCost=0 , Conveniencefees=300 , hightax=0.18 , lowtax=0.12,
+          totaltax =0; bookings.map( booking =>{ let price =
+          booking.listing.price; roomsCost += price; totaltax += price > 8000 ?
+          price * hightax : price *lowtax; }); %>
           <h6>Total rooms cost (tax incl)</h6>
-          <p>₹ 2,531.25</p>
+          <p>₹ <%= roomsCost %></p>
           <h6>Convenience Fees (tax incl)</h6>
-          <p>₹ 281.25</p>
+          <p>₹ <%= Conveniencefees%></p>
           <h6>Total tax</h6>
-          <p>₹ 312.50</p>
+          <p>₹ <%= totaltax %></p>
           <hr />
           <h5>Total</h5>
-          <p class="h4 text-primary">₹ 2,812.50</p>
+          <p class="h4 text-primary">
+            ₹ <%= totaltax+roomsCost+Conveniencefees %>
+          </p>
         </div>
 
         <div class="summary-box card p-4 mt-3">

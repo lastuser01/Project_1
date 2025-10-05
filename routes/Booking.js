@@ -15,19 +15,22 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  let userbookings;
-  if (req.user) {
-    let user1 = await User.findById(req.user._id).populate({
-      path: "bookings",
-      populate: { path: "listing" },
-    });
-    userbookings = user1.bookings;
-  } else {
-    userbookings = [];
-  }
-  res.render("./listing/Booking.ejs", { bookings: userbookings });
-});
+router.get(
+  "/",
+  WrapAsync(async (req, res) => {
+    let userbookings;
+    if (req.user) {
+      let user1 = await User.findById(req.user._id).populate({
+        path: "bookings",
+        populate: { path: "listing" },
+      });
+      userbookings = user1.bookings;
+    } else {
+      userbookings = [];
+    }
+    res.render("./listing/Booking.ejs", { bookings: userbookings });
+  })
+);
 
 router.post(
   "/:id",
@@ -58,9 +61,8 @@ router.delete(
   "/:id",
   WrapAsync(async (req, res) => {
     let bookingid = req.params.id;
-    let { price } = await Listing.findById(bookingid.listing);
-    let user1 = await Booking.findByIdAndDelete(bookingid);
-    console.log(price);
+    await Listing.findById(bookingid.listing);
+    await Booking.findByIdAndDelete(bookingid);
     res.redirect("/booking");
   })
 );
